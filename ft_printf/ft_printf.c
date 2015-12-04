@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 18:13:24 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/03 20:31:14 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/12/04 16:19:54 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 
 #define OK 0
-#define KO 0
+#define KO 1
 
 void	write_arg(int fd, const char **str, va_list args);
 
@@ -24,7 +24,7 @@ void	my_write(int fd, const char *str, size_t len);
 		exit(KO)
 }
 
-int	ft_print_fd(int fd, const char *restrict format, ...)
+int	ft_printfd(int fd, const char *restrict format, ...)
 {
 	const char	*begin;
 	const char	*end;
@@ -54,7 +54,9 @@ int	ft_print(const char *restrict format, ...)
 	const char	*begin;
 	const char	*end;
 	va_list		args;
+	char		color;
 
+	color = 0;
 	va_start(args, format);
 	begin = format;
 	while (*begin)
@@ -65,11 +67,11 @@ int	ft_print(const char *restrict format, ...)
 		my_write(0, begin, end - begin);
 		if (*end == '\0')
 			break;
-		*(end++) == '\\' ? my_write(0, end, 1) : write_arg(0, &end, args);
+		*end++ == '\\' ? my_write(0, end, 1) : write_arg(0, &end, args, color);
 		begin = ++end;
 	}
 	va_end(args);
-	if (g_flag & MASK_COLOR)
+	if (color)
 		write(fd, WHITE, COLOR_LEN)
 	return (OK);
 }
