@@ -13,6 +13,8 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+#include "ft_printf.h"
+
 #define MASK_PTR 0xf000000000000000
 
 void	write_ptr(int fd, void *ptr)

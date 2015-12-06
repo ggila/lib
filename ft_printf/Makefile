@@ -27,13 +27,14 @@ FILE =  ft_printf.c\
 		ft_printf_fd.c\
 		ft_putnbr_fd.c\
 		ft_strlen.c\
-		ft_strlen.o\
+		ft_memcpy.c\
 		my_write.c\
 		read_number.c\
 		write_arg.c\
 		write_col.c\
 		write_float.c\
-		write_ptr.c
+		write_ptr.c\
+		main.c
 
 # Obj directory
 O_DIR = obj

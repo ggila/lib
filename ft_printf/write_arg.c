@@ -17,13 +17,11 @@
 
 static void	write_string(int fd, char *str, char flag)
 {
-	my_write(fd, str, flag ? 1 : ft_strlen(str))
+	my_write(fd, str, flag ? 1 : ft_strlen(str));
 }
 
-void	write_arg(int fd, char **str, va_list args, char *color)
+void	write_arg(int fd, const char **str, va_list args, char *color)
 {
-	int	dec;
-
 	if (**str > 'A' && **str < 'Z')
 	{
 		*color = 1;
@@ -34,8 +32,8 @@ void	write_arg(int fd, char **str, va_list args, char *color)
 	else if (**str == 'p')
 		write_ptr(fd, va_arg(args, void*));
 	else if (**str == 'd')
-		ft_putnbr(fd, va_arg(args, int));
+		ft_putnbr_fd(fd, va_arg(args, int));
 	else
-		write_float(fd, va_arg(args, float),
+		write_float(fd, (float)va_arg(args, double),
 				**str == 'f' ? 5 : read_number(str));
 }

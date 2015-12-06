@@ -16,7 +16,7 @@
 
 #include "ft_printf.h"
 
-int	ft_print(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	const char	*begin;
 	const char	*end;
