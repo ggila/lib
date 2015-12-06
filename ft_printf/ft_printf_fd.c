@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdarg.h>
 #include <stdlib.h>
 
 #include "ft_printf.h"
 
-int	ft_print(const char *format, ...)
+int	ft_printfd(int fd, const char *format, ...)
 {
 	const char	*begin;
 	const char	*end;
@@ -31,15 +30,15 @@ int	ft_print(const char *format, ...)
 		end = begin;
 		while (*end && *end != '%' && *end != '\\')
 			end++;
-		my_write(1, begin, end - begin);
+		my_write(fd, begin, end - begin);
 		if (*end == '\0')
 			break;
-		*end++ == '\\' ? my_write(1, end, 1)
-						: write_arg(1, &end, args, &color);
+		*end == '\\' ? my_write(fd, ++end, 1)
+						: write_arg(fd, &end, args, &color);
 		begin = ++end;
 	}
 	va_end(args);
 	if (color)
-		my_write(1, WHITE, 5);
+		my_write(fd, WHITE, 5);
 	return (OK);
 }

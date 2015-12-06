@@ -16,18 +16,18 @@ static int	my_atoi(const char **str, int n)
 	{
 		n = 10 * n + **str - '0';
 		(*str)++;
-		return (myatoi(*str, n));
+		return (my_atoi(str, n));
 	}
 	else
 		return (n);
 }
 
-int			read_number(char **str)
+int			read_number(const char **str)
 {
 	if (**str == '-')
 	{
 		(*str)++;
-		return (-myatoi(str, 0));
+		return (-my_atoi(str, 0));
 	}
 	if (**str == '+')
 		(*str)++;

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include <unistd.h>
+
+#include "ft_printf.h"
 
 void	ft_fill_buf(int n, char *str)
 {
@@ -40,5 +42,5 @@ void	ft_putnbr_fd(int fd, int n)
 		n *= -1;
 	}
 	ft_fill_buf(n, str);
-	write(fd, buf, ++str - buf);
+	my_write(fd, buf, ++str - buf);
 }

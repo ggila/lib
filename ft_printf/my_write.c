@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 16:48:05 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/04 16:56:37 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/12/03 18:13:24 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/12/06 16:10:44 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdarg.h>
+#include <stdlib.h>
 
-#define MASK_PTR 0xf000000000000000
+#include "ft_printf.h"
 
-void	write_ptr(int fd, void *ptr)
+void	my_write(int fd, const char *str, size_t len)
 {
-	char					str[16];
-	int						i;
-	char					add[16];
-	long long unsigned int	p;
-
-	ft_memcpy(str, "0123456789abcdef", 17);
-	p = (long long unsigned int)ptr;
-	i = -1;
-	while (++i < 16)
-	{
-		add[i] = str[(p & MASK_PTR) >> 60];
-		p = p << 4;
-	}
-	i = 0;
-	while (i < 15 && add[i] == '0')
-		i++;
-	write(fd, "0x", 2);
-	write(fd, add + i, 16 - i);
+	if (write(fd, str, len) == -1)
+		exit(KO);
 }

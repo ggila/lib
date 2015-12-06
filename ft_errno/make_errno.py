@@ -2,11 +2,7 @@ import os
 import re
 import sys
 
-if len(sys.argv) != 2:
-    print "give me an header to edit", 
-    exit(0)
-
-include = sys.argv[1]
+include = 'inc/error.h'
 
 check = ["./inc", "./src", "./error.txt"]
 error = []
@@ -69,6 +65,7 @@ with open("./inc/error.h", "w") as f:
         writeIndex(f, a, index)
         rep += '\t{{"{0}", {1}}},\n'.format(getMsg(a, b), len(b))
         index += 1
+    f.write("\n#endif\n");
     rep = rep[:-2] + '\n};'
     f.close()
 

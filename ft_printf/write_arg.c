@@ -11,13 +11,16 @@
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <stdlib.h>
 
-static void	write_string(fd, char *str, char flag)
+#include "ft_printf.h"
+
+static void	write_string(int fd, char *str, char flag)
 {
 	my_write(fd, str, flag ? 1 : ft_strlen(str))
 }
 
-void	write_arg(int fd, char **str, va_list args, char color)
+void	write_arg(int fd, char **str, va_list args, char *color)
 {
 	int	dec;
 
