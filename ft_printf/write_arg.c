@@ -6,18 +6,15 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:22:01 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/04 17:43:39 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/12/06 16:12:12 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-//color = RGB W Y
-//82  71  66  87  89
-//format = scdfp
 
-void	write_string(fd, char *str, char flag)
+static void	write_string(fd, char *str, char flag)
 {
-	write(1, str, flag ? 1 : ft_strlen(str))
+	my_write(fd, str, flag ? 1 : ft_strlen(str))
 }
 
 void	write_arg(int fd, char **str, va_list args, char color)

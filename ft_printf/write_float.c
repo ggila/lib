@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_number.c                                      :+:      :+:    :+:   */
+/*   write_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 17:52:19 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/06 16:20:59 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/12/06 15:54:09 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/12/06 16:10:54 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	my_atoi(const char **str, int n)
-{
-	if (**str >= '0' && **str <= '9')
-	{
-		n = 10 * n + **str - '0';
-		(*str)++;
-		return (myatoi(*str, n));
-	}
-	else
-		return (n);
-}
+#include "unistd.h"
+#define COMMA "."
 
-int			read_number(char **str)
+void	write_float(int fd, float x, int dec)
 {
-	if (**str == '-')
-	{
-		(*str)++;
-		return (-myatoi(str, 0));
-	}
-	if (**str == '+')
-		(*str)++;
-	return (my_atoi(str, 0));
+	int		i;
+	int		virg;
+
+	if (dec > 50)
+		dec = 50;
+	ft_putnbr((int)x);
+	my_write(1, COMMA, 1);
+	virg = x - (int)x;
+	i = 0;
+	while (i++ < dec)
+		virg *= 10;
+	ft_putnbr(virg);
 }

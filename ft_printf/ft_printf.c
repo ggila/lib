@@ -6,17 +6,12 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 18:13:24 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/04 16:19:54 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/12/06 16:10:44 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 #include <stdarg.h>
-
-#define OK 0
-#define KO 1
-
-void	write_arg(int fd, const char **str, va_list args);
 
 void	my_write(int fd, const char *str, size_t len);
 {
@@ -45,7 +40,7 @@ int	ft_printfd(int fd, const char *restrict format, ...)
 	}
 	va_end(args);
 	if (g_flag & MASK_COLOR)
-		write(fd, WHITE, COLOR_LEN)
+		my_write(fd, WHITE, COLOR_LEN)
 	return (OK);
 }
 
@@ -72,6 +67,6 @@ int	ft_print(const char *restrict format, ...)
 	}
 	va_end(args);
 	if (color)
-		write(fd, WHITE, COLOR_LEN)
+		my_write(fd, WHITE, COLOR_LEN)
 	return (OK);
 }

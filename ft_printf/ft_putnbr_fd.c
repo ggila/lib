@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_number.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 17:52:19 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/06 16:20:59 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/12/04 08:31:43 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/12/06 16:16:59 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	my_atoi(const char **str, int n)
+#include "unistd.h"
+
+void	ft_fill_buf(int n, char *str)
 {
-	if (**str >= '0' && **str <= '9')
+	if (n > 9)
 	{
-		n = 10 * n + **str - '0';
-		(*str)++;
-		return (myatoi(*str, n));
+		ft_fill_buf(n / 10, str);
+		*str++ = '0' + (n % 10);
 	}
 	else
-		return (n);
+		*str++ = '0' + n;
 }
 
-int			read_number(char **str)
+void	ft_putnbr_fd(int fd, int n)
 {
-	if (**str == '-')
+	char	buf[11];
+	char	*str;
+
+	if (n == -2147483648)
 	{
-		(*str)++;
-		return (-myatoi(str, 0));
+		write(fd, "-2147483648", 11);
+		return;
 	}
-	if (**str == '+')
-		(*str)++;
-	return (my_atoi(str, 0));
+	str = buf;
+	if (n < 0)
+	{
+		*str++ = '-';
+		n *= -1;
+	}
+	ft_fill_buf(n, str);
+	write(fd, buf, ++str - buf);
 }

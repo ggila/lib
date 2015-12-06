@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_number.c                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 17:52:19 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/12/06 16:20:59 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/12/06 16:06:55 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/12/06 16:15:02 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	my_atoi(const char **str, int n)
-{
-	if (**str >= '0' && **str <= '9')
-	{
-		n = 10 * n + **str - '0';
-		(*str)++;
-		return (myatoi(*str, n));
-	}
-	else
-		return (n);
-}
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int			read_number(char **str)
-{
-	if (**str == '-')
-	{
-		(*str)++;
-		return (-myatoi(str, 0));
-	}
-	if (**str == '+')
-		(*str)++;
-	return (my_atoi(str, 0));
-}
+# define OK 0
+# define KO 1
+
+void	my_write(int fd, const char *str, size_t len);
+void	write_arg(int fd, const char **str, va_list args);
+void	write_float(int fd, float x, int dec);
+void	write_arg(int fd, char **str, va_list args, char color);
+int		read_number(char **str);
+void	ft_putnbr_fd(int fd, int n);
+
+#endif
