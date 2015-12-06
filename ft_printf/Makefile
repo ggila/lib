@@ -25,6 +25,7 @@ NAME = printf
 
 FILE =  ft_printf.c\
 		ft_printf_fd.c\
+		my_printf.c\
 		ft_putnbr_fd.c\
 		ft_strlen.c\
 		ft_memcpy.c\

@@ -25,6 +25,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+void	my_printf(int fd, const char *format, va_list args, char *color);
 void	my_write(int fd, const char *str, size_t len);
 void	write_float(int fd, float x, int dec);
 void	write_arg(int fd, const char **str, va_list args, char *color);

@@ -15,9 +15,14 @@
 
 #include "ft_printf.h"
 
-static void	write_string(int fd, char *str, char flag)
+static void	write_string(int fd, char *str)
 {
-	my_write(fd, str, flag ? 1 : ft_strlen(str));
+	my_write(fd, str, ft_strlen(str));
+}
+
+static void	write_char(int fd, char c)
+{
+	my_write(fd, &c, 1);
 }
 
 void	write_arg(int fd, const char **str, va_list args, char *color)
@@ -27,8 +32,10 @@ void	write_arg(int fd, const char **str, va_list args, char *color)
 		*color = 1;
 		write_col(fd, **str);
 	}
-	else if (**str == 'c' || **str == 's')
-		write_string(fd, va_arg(args, char*), **str == 'c');
+	else if (**str == 's')
+		write_string(fd, va_arg(args, char*));
+	else if (**str == 'c')
+		write_char(fd, va_arg(args, int));
 	else if (**str == 'p')
 		write_ptr(fd, va_arg(args, void*));
 	else if (**str == 'd')

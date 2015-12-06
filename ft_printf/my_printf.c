@@ -1,7 +1,8 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_fd.c                                     :+:      :+:    :+:   */
+/*   printf_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,16 +16,22 @@
 
 #include "ft_printf.h"
 
-int	ft_print_fd(int fd, const char *format, ...)
+void	my_printf(int fd, const char *format, va_list args, char *color)
 {
-	va_list		args;
-	char		color;
+	const char	*begin;
+	const char	*end;
 
-	color = 0;
-	va_start(args, format);
-	my_printf(fd, format, args, &color);
-	va_end(args);
-	if (color)
-		my_write(fd, WHITE, 5);
-	return (OK);
+	begin = format;
+	while (*begin)
+	{
+		end = begin;
+		while (*end && *end != '%')
+			end++;
+		my_write(fd, begin, end - begin);
+		if (*end == '\0')
+			break;
+		++end;
+		write_arg(fd, &end, args, color);
+		begin = ++end;
+	}
 }

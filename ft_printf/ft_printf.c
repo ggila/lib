@@ -18,28 +18,14 @@
 
 int	ft_printf(const char *format, ...)
 {
-	const char	*begin;
-	const char	*end;
 	va_list		args;
 	char		color;
 
 	color = 0;
 	va_start(args, format);
-	begin = format;
-	while (*begin)
-	{
-		end = begin;
-		while (*end && *end != '%' && *end != '\\')
-			end++;
-		my_write(1, begin, end - begin);
-		if (*end == '\0')
-			break;
-		*end++ == '\\' ? my_write(1, end, 1)
-						: write_arg(1, &end, args, &color);
-		begin = ++end;
-	}
+	my_printf(1, format, args, &color);
 	va_end(args);
 	if (color)
-		my_write(1, WHITE, 5);
+		my_write(0, WHITE, 5);
 	return (OK);
 }
