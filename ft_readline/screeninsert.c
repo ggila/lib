@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh1.h"
+#include "ft_readline.h"
+
+extern int g_prompt_size;
 
 void	ft_screen_word_insert(char *word, char *line)
 {
@@ -27,7 +29,7 @@ void	ft_screen_insert(char c, char *line)
 	char	buf[40];
 	char	*area;
 
-	ft_putchar(c);
+	my_write(1, &c, 1);
 	area = buf;
 	tputs(tgetstr("sc", &area), 1, ft_putchar_tputs);
 	i = 0;
@@ -35,8 +37,8 @@ void	ft_screen_insert(char c, char *line)
 	{
 		tputs(tgetstr("do", &area), 1, ft_putchar_tputs);
 		tputs(tgetstr("cr", &area), 1, ft_putchar_tputs);
-		ft_putchar(line[g_disp.size - PROMPT_SIZE
-			+ (g_disp.cur_line + i - 1) * g_disp.size]);
+		my_write(1, line[g_disp.size - g_prompt_size
+			+ (g_disp.cur_line + i - 1) * g_disp.size], 1);
 		i++;
 	}
 	tputs(tgetstr("rc", &area), 1, ft_putchar_tputs);

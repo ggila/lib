@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:55:17 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/25 18:56:48 by ggilaber         ###   ########.fr       */
+/*   Created: 2014/11/04 21:24:16 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/11/25 08:30:48 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_memcpy(void *dst, void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-
-	if (!dst)
-		return;
-	i = 0;
-	while (i < n / 8)
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 == *s2 && *s1 && n)
 	{
-		*((long unsigned int*)dst + i) = *((long unsigned int*)src + i);
-		i += 8;
+		s1++;
+		s2++;
+		n--;
 	}
-	while (i < n)
-	{
-		((char*)dst)[i] = ((char*)src)[i];
-		++i;
-	}
-	return;
+	if (!n)
+		return (0);
+	return (*s1 - *s2);
 }

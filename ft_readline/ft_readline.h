@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh1.h                                              :+:      :+:    :+:   */
+/*   ft_readline.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH1_H
-# define SH1_H
+#ifndef FT_READLINE_H
+# define FT_READLINE_H
 
-# include "libft.h"
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <signal.h>
 # include <termios.h>
 # include <term.h>
-# include <dirent.h>
-# include <sys/stat.h>
-# include <signal.h>
 # include <fcntl.h>
 
-# define SET_BLACK ft_putstr("\033[1;30m")
-# define SET_BLUE ft_putstr("\033[1;34m")
-# define SET_WHITE ft_putstr("\033[1;37m")
+# define SET_BLACK write(1, "\033[1;30m", 7)
+# define SET_BLUE write(1, "\033[1;34m", 7)
+# define SET_WHITE write(1, "\033[1;37m", 7)
 
 # define OK 0
 # define KO 1
@@ -39,8 +35,6 @@
 # define PATH 0
 # define DI 1
 # define FIL 2
-
-# define PROMPT_SIZE 15
 
 # define MASK 1U
 # define MASK_ENV_I MASK<<0
@@ -63,13 +57,9 @@ typedef struct	s_hll
 }				t_hll;
 
 
-char			g_flag;
-struct termios	g_term;
-struct termios	g_term_init;
+char			g_readline_flag;
 t_hll			*g_hist;
 t_screen		g_disp;
-
-
 
 
 //main
@@ -78,6 +68,7 @@ void	ft_tabcpy(char *line, char temp[], int cur);
 void	ft_prompt(void);
 void	ft_edit_init(int *cur);
 void	ft_lineclr(char *line);
+//init.c
 void	ft_init_term(void);
 void	ft_init_hist(void);
 void	ft_init_screen(void);
@@ -109,5 +100,8 @@ void	ft_go_downleft(void);
 void	ft_error(char *str);
 void	ft_quit_ok(void);
 void	ft_restore_term(void);
+//lib.c
+char	*ft_strdup(const char *str);
+int		ft_strlen(const char *str);
 
 #endif

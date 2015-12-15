@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:55:17 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/25 18:56:48 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/12/03 18:13:24 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/12/06 16:10:44 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_readline.h"
+
+#include <unistd.h>
 #include <stdlib.h>
 
-void	ft_memcpy(void *dst, void *src, size_t n)
+void	my_write(int fd, const char *str, size_t len)
 {
-	size_t	i;
-
-	if (!dst)
-		return;
-	i = 0;
-	while (i < n / 8)
-	{
-		*((long unsigned int*)dst + i) = *((long unsigned int*)src + i);
-		i += 8;
-	}
-	while (i < n)
-	{
-		((char*)dst)[i] = ((char*)src)[i];
-		++i;
-	}
-	return;
+	if (write(fd, str, len) == -1)
+		exit(KO);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh1.h"
+#include "ft_readline.h"
 
 static void	ft_extreme_case(char c)
 {
@@ -69,7 +69,7 @@ static void	ft_del_current(int *cur)
 	}
 	tputs(tgetstr("dl", &area), 1, ft_putchar_tputs);
 	tputs(tgetstr("cr", &area), 1, ft_putchar_tputs);
-	ft_putstr("     --------> ");
+	ft_prompt();
 	ft_edit_init(cur);
 }
 

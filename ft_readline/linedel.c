@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh1.h"
+#include "ft_readline.h"
+
+extern int	g_prompt_size;
 
 void		ft_del_line(int cur, char *line)
 {
@@ -32,7 +34,7 @@ void		ft_del(int cur, char *line)
 	area = b;
 	res = tgetstr("dc", &area);
 	tputs(res, 1, ft_putchar_tputs);
-	if (ft_strlen(line) == g_disp.size - PROMPT_SIZE - 1)
+	if (ft_strlen(line) == g_disp.size - g_prompt_size - 1)
 		g_disp.nb_line -= 1;
 }
 
@@ -50,8 +52,8 @@ void		ft_del_pre(int *cur, char *line)
 		ft_del(*cur, line);
 		tputs(tgetstr("sc", &area), 1, ft_putchar_tputs);
 		tputs(tgetstr("ei", &area), 1, ft_putchar_tputs);
-		ft_putstr(start + *cur);
-		ft_putchar(' ');
+		my_write(1, start + *cur, ft_strlen(start + *cur));
+		my_write(1, " ", 1);
 		tputs(tgetstr("im", &area), 1, ft_putchar_tputs);
 		tputs(tgetstr("rc", &area), 1, ft_putchar_tputs);
 	}

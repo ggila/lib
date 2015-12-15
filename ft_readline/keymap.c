@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh1.h"
+#include "ft_readline.h"
 
 static void	ft_move(int n, int *cur, char *line)
 {
@@ -44,12 +44,12 @@ int			ft_is_map(char c)
 
 void		ft_map(char *buf, int *cur, char *line)
 {
-//	if (buf[0] == 9 && !(g_flag & MASK_ENV_I)
+//	if (buf[0] == 9 && !(g_readline_flag & MASK_ENV_I)
 //			&& (*cur == ft_strlen(line) || line[*cur] == ' '))
 //		ft_tab(buf, cur, line);
 	if (buf[0] == 4)
 	{
-		ft_putendl("\n");
+		my_write(1, "\n\n", 1);
 		ft_quit_ok();
 		exit(0);
 	}
@@ -57,7 +57,7 @@ void		ft_map(char *buf, int *cur, char *line)
 		ft_save_hist(line);
 	else if (buf[0] == 27 && buf[2] % 5 > 1)
 		ft_fleche(buf[2], cur, line);
-	else if (buf[0] == 27 && !(g_flag & MASK_ENV_I))
+	else if (buf[0] == 27 && !(g_readline_flag & MASK_ENV_I))
 		ft_hist(buf[2], cur, line);
 	else if (buf[0] == 126 && buf[1] == 91)
 		ft_del(*cur, line);

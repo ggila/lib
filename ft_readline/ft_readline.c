@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh1.h"
+#include "ft_readline.h"
+
 static void		ft_get_cmd_init(int *cur, char buf[3], char line[])
 {
 	ft_edit_init(cur);
-	ft_memclr(buf, 3);
-	ft_memclr(line, 250);
+	ft_memset(buf, 0, 3);
+	ft_memset(line, 0, 250);
 }
 
 static void		ft_go_down(void)
@@ -45,10 +46,23 @@ void			ft_get_cmd(char line[])
 		if (!ft_is_map(buf[0]))
 		{
 			ft_insert(line, buf[0], &cursor);
-			g_flag & MASK_ENV_I ? ft_putchar(buf[0]) :
+			g_readline_flag & MASK_ENV_I ? my_write(1, buf, 1) :
 				ft_screen_insert(buf[0], line);
 		}
 	}
 	ft_go_down();
-	ft_putchar('\n');
+	my_write(1, "\n", 1);
+}
+
+#include "stdio.h"
+int main(void)
+{
+	char line[1000];
+
+	while (1)
+	{
+		ft_memset(line, 0, 1000);
+		ft_get_cmd(line);
+		printf("%s\n", line);
+	}
 }
