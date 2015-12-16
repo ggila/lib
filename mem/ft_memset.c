@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include "ft_readline.h"
+
+//Does not work
 
 void	ft_memset(void *dst, char c, size_t n)
 {
@@ -19,9 +21,9 @@ void	ft_memset(void *dst, char c, size_t n)
 
 	if (!dst)
 		return;
-	i = 0;
-	while (i < 3)
-		s = c << i;
+	i = -1;
+	while (++i < 3)
+		s += c << (i * 8);
 	i = 0;
 	while (i < n / 8)
 	{

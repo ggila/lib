@@ -15,8 +15,8 @@
 static void		ft_get_cmd_init(int *cur, char buf[3], char line[])
 {
 	ft_edit_init(cur);
-	ft_memset(buf, 0, 3);
-	ft_memset(line, 0, 250);
+	ft_bzero(buf, 3);
+	ft_bzero(line, 250);
 }
 
 static void		ft_go_down(void)
@@ -32,15 +32,19 @@ static void		ft_go_down(void)
 	}
 }
 
+#include "stdio.h"
+
 void			ft_get_cmd(char line[])
 {
 	char	buf[3];
 	int		cursor;
+	int fd = open("/dev/pts/0", O_WRONLY);
 
 	ft_get_cmd_init(&cursor, buf, line);
 	while (buf[0] != 10)
 	{
 		read(0, buf, 3);
+		dprintf(fd, "%d\t%d\t%d\n", buf[0], buf[1], buf[2]);
 		if (ft_is_map(buf[0]))
 			ft_map(buf, &cursor, line);
 		if (!ft_is_map(buf[0]))
@@ -50,19 +54,20 @@ void			ft_get_cmd(char line[])
 				ft_screen_insert(buf[0], line);
 		}
 	}
+	write(1, "abc", 3);
 	ft_go_down();
 	my_write(1, "\n", 1);
 }
 
-#include "stdio.h"
 int main(void)
 {
 	char line[1000];
 
 	while (1)
 	{
-		ft_memset(line, 0, 1000);
+		ft_bzero(line, 1000);
 		ft_get_cmd(line);
+		write(1,"ok",2);
 		printf("%s\n", line);
 	}
 }

@@ -12,7 +12,8 @@
 
 #include "ft_readline.h"
 
-struct termios			g_term[2];
+struct termios			g_term;
+struct termios			g_term_init;
 extern int				g_prompt_size;
 
 void		ft_init_term(void)
@@ -23,13 +24,13 @@ void		ft_init_term(void)
 	char	*area;
 
 	tgetent(buf, getenv("TERM"));
-	tcgetattr(0, g_term);
-	g_term[1] = g_term[0];
-	g_term[0].c_lflag &= ~(ICANON);
-	g_term[0].c_lflag &= ~(ECHO);
-	g_term[0].c_cc[VMIN] = 1;
-	g_term[0].c_cc[VTIME] = 0;
-	tcsetattr(0, TCSADRAIN, g_term);
+	tcgetattr(0, &g_term);
+	g_term_init = g_term;
+	g_term.c_lflag &= ~(ICANON);
+	g_term.c_lflag &= ~(ECHO);
+	g_term.c_cc[VMIN] = 1;
+	g_term.c_cc[VTIME] = 0;
+	tcsetattr(0, TCSADRAIN, &g_term);
 	area = buf2;
 	res = tgetstr("im", &area);
 	tputs(res, 1, ft_putchar_tputs);

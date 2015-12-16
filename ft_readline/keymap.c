@@ -53,8 +53,8 @@ void		ft_map(char *buf, int *cur, char *line)
 		ft_quit_ok();
 		exit(0);
 	}
-	else if (buf[0] == 10)
-		ft_save_hist(line);
+//	else if (buf[0] == 10)
+//		ft_save_hist(line);
 	else if (buf[0] == 27 && buf[2] % 5 > 1)
 		ft_fleche(buf[2], cur, line);
 	else if (buf[0] == 27 && !(g_readline_flag & MASK_ENV_I))

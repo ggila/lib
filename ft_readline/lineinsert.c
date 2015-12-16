@@ -19,7 +19,7 @@ void		ft_insert(char *line, char c, int *cur)
 	int		i;
 
 	len = ft_strlen(line);
-	ft_memset(temp, 0, len + 3);
+	ft_bzero(temp, len + 3);
 	if (*cur == 248)
 		ft_error("too long, fuck it");
 	if (*cur != len)

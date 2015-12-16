@@ -12,7 +12,8 @@
 
 #include "ft_readline.h"
 
-extern struct termios	g_term[2];
+extern struct termios	g_term;
+extern struct termios	g_term_init;
 
 void	ft_error(char *str)
 {
@@ -32,7 +33,7 @@ void	ft_restore_term(void)
 	area = buf;
 	res = tgetstr("ei", &area);
 	tputs(res, 1, ft_putchar_tputs);
-	tcsetattr(0, TCSANOW, g_term + 1);
+	tcsetattr(0, TCSANOW, &g_term_init);
 }
 
 void	ft_quit_ok(void)
