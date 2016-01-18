@@ -1,4 +1,9 @@
+# Symbolic table implementation
 
-void	st_put(t_st simtab, char *key, void *val);
-void	*st_get(t_st simtab, char *key);
-void	st_delete();
+## STRUCT
+
+## API
+
+* void	st\_put(t\_st \*simtab, char \*key, void \*val);  
+* void	\*st\_get(t\_st \*simtab, char \*key);  
+* void	st\_delete();
