@@ -1,5 +1,9 @@
 # Symbolic table implementation in C
 
+
+## Several implementation :
+![alt-text] (img/Summary.png "Implementation overview")
+
 ## API
 ``` c
 t_st	*st_new(void);
@@ -19,6 +23,7 @@ char	st_isempty(t_st *simtab);
 
 
 ## Compare key (char\*) functions
-```c ft\_strequ(const char \*s1, const char \*s2);```
+```c ft_strequ(const char *s1, const char *s2);```
 
 
+<sub>ggilaber@student.42.fr

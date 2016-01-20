@@ -1,3 +1,9 @@
+* binary tree
+* binary heap
+* binary search tree
+* balance search tree
+* red black bst
+
 # binary tree
 
 ## binary tree
@@ -16,8 +22,8 @@ Height of tree eith N nodes is lg N
 **Binary Heap**:  
 binary tree with two constraints:
 
-* Complete binary tree (_shape property_)
-* Parent's key no smaller (or no bigger) than children's key (heap property)
+* Complete binary tree _(shape property)_
+* Parent's key no smaller (or no bigger) than children's key _(heap property)_
 
 **Array representation**:
 
@@ -35,7 +41,7 @@ binary tree with two constraints:
 
 **Scenario**:  
 
-* childs become larger thsn parent (swim)
+* childs become larger than parent (swim)
  * exchange key
  * repeat for parent until heap order restored
 * insert
@@ -117,7 +123,7 @@ Value	get_val(Node root, Key key)
 *Cost*: 1 + lg N 
 
 **Put**  
-_We assume here that count of subtree bot present in node_  
+_(We assume here that count of subtree not present in node)_  
 
 * key in tree: reset value
 * Key not in tree: add new node
@@ -144,7 +150,9 @@ _We assume here that count of subtree bot present in node_
 		root = rec_put(root, key, val);
 	}
 ```
-*Cost*: 1 + lg N, depends on the way how keys come in, best case when the tree is compltetely balanced
+*we could have used an as efficient and simplier, not recursive algo, but we'll use this one for rb bst*
+
+**Cost**: 1 + lg N, depends on the way how keys come in, best case when the tree is compltetely balanced
 
 **property**: if N distinct keys are inserted in random order, the _expected height_ of tree is ~ 4,311 ln N, _worst heught_ is N
 
@@ -179,3 +187,101 @@ to delete a node with key _k_, search for node _t_ containing key _k_
  * put _x_ in _t_'s spot
 
 Problem: lead ton non-symmetric bst
+
+# 2-3 Search Tree
+
+Allow 1 or 2 keys per node, node are either:
+
+* 2-node: 1 key, 2 child
+* 3-node: 2 keys, 3 child (one less, one between, one greater: **symmetric order**)
+
+**Perfect blance**: every path from root to null link has same length  
+
+**Tree height**:  
+
+* worstcase: lg N (all 2-node)
+* bestcase: 0.631 lg N (all 3-node)
+* between 12 and 20 for a million nodes
+* between 18 and 30 for a billion nodes
+
+Guarantee **logarithmic** time ! **But**, cumbersome implementation:
+
+* Maintaining multiple node type is cumbersome
+* Need multiple compares to move down tree
+* Need to move back up the tree to split 4-nodes
+* Large number cases for splitting
+
+# Red-Black BST
+
+* represent 2-3 tree as a BST
+* use internal left leaning links as glue for 3 nodes
+
+equivalent definition:
+
+* No node has 2 red links connected to it
+* Every path from root to null link has the same number of black links (2-3 ST are perfectly balanced)
+* Red link leans left
+
+**Observation**:  
+Search is the same as for elementary BST but runs faster because of better balance
+
+Each node is pointed to by precisely one link -> can encode color of links in node
+
+**Basic operations**:
+
+* rotate left (orient a (temporarily) right-leaning red link to lean left) (considere what happening when insertinging 'C' to rb bst containing only 'A')
+* rotate right
+* color flip (recolor to split a (temporary) 4-node)
+
+**Basic strategy**: maintin 1-1 correspondence with 2-3 trees by applying elementary red-blak BST operations
+
+**Insertion**
+
+* case 0: insert in 1 node tree
+![alt-text] (img/RB_Tree_insert-1-nodes.png "Insert into a tree with exactly 1 nodes")
+
+* case 1: insert in 2 nodes tree 
+![alt-text] (img/RB_Tree_insert-2-nodes.png "Insert into a tree with exactly 2 nodes")
+
+* case 2: insert in 3 nodes tree
+ * Do standard BST insert; color new link red
+ * Rotate to balance the 4-node (if needed)
+ * Flip colors to pass red link up one level
+ * Rotate to make lean left (if needed)
+ * Repeat case 1 or case 2 up the tree (if needed)
+![alt-text] (img/RB_Tree_insert-3-nodes.png "Insert into a tree with exactly 2 nodes")
+
+We can upgraded code from bst:
+
+```
+	Pseucode
+	
+	Node rec_put(Node h, Key key, Value val)
+	{
+		if (h = null)
+			return new_node(key, val, RED);                  <   modified
+		int cmp =  compare(key, h.key)
+		if (cmp < 0)
+			h.left = rec_put(h.left, key, val);
+		else if (cmp > 0)
+			h.right = rec_put(h.right, key, val);
+		else
+			h.val = val;
+		
+		if (isRed(h.right) && !isRed(h.left))              - 
+			h = rotateLeft(h);                              |
+		if (isRed(h.left) && !isRed(h.left.left))           |   added
+			h = rotateRihgt(h);                             |
+		if (isRed(h.right) && !isRed(h.right))              |
+			h = rotateLeft(h);                             -
+			
+		return h;
+	}
+	
+	void put_node(Node root, Key key, Value val)
+	{
+		root = rec_put(root, key, val);
+	}
+```
+
+<sub>ggilaber@student.42.fr
