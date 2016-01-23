@@ -103,7 +103,7 @@ Each node has a key, every node's key is:
 * reference to right subtree
 * (total of nodes in subtree)
 
-The total of nodes in subtree can help to implement some ordered function such as betwen_value(a, b), but it has to be updated at insertion and deletion.
+The total of nodes in subtree can help to implement some ordered function such as range_searching(a, b), but it has to be updated at insertion and deletion.
 
 **Get**  
 straight-forward implementation
@@ -272,7 +272,7 @@ We can upgraded code from bst:
 ```
 	Pseucode
 	
-	Node rec_put(Node h, Key key, Value val)
+	Node rec_put(Node h, Key key, Value val)                compare with BST
 	{
 		if (h = null)
 			return new_node(key, val, RED);                  <   modified
@@ -299,5 +299,24 @@ We can upgraded code from bst:
 		root = rec_put(root, key, val);
 	}
 ```
+
+# Geometric applications of BSTs
+
+![alt-text] (img/geometric_application.png "Geometric application")
+
+* ranging search:
+
+	algo:
+	
+ * Recursively find all keys in left subtree (if any could fall in range)
+ * Check in current node
+ * Recursively find all keys in right subtree (if any could fall in range)  
+
+	proposition: running time proportionnal to R + log N 
+
+ * N: height of tree
+ * R: number of matching key
+
+* given N horizontal and vertical line segments, find all intersections
 
 <sub>ggilaber@student.42.fr
