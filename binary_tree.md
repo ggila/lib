@@ -1,23 +1,26 @@
+
+# binary tree
+
+Index:
+
 * binary tree
 * binary heap
 * binary search tree
 * balance search tree
 * red black bst
 
-# binary tree
-
 ## binary tree
 
-**Binary Tree**:  
-empty or node with links to left and right binary trees
+![alt-text] (img/binary_tree.png "Binary tree")
 
-**Complete Tree**:  
-perfectly balanced, except for bottom level
+**Binary Tree**: empty or node with links to left and right binary trees
+
+**Complete Tree**: perfectly balanced, except for bottom level
 
 property of complete binary tree:  
 Height of tree eith N nodes is lg N
 
-# binary heap
+## binary heap
 
 **Binary Heap**:  
 binary tree with two constraints:
@@ -65,6 +68,8 @@ binary tree with two constraints:
  * leave in array, instead of nulling out
  * cost < 2N lg N compares and exchanges
 
+[Heapsort Video](https://www.youtube.com/watch?v=_bkow6IykGM "Heapsort")
+
 **Signifiance**:  
 In place sorting algo with N log N worst case:
 
@@ -98,13 +103,16 @@ Each node has a key, every node's key is:
 * reference to right subtree
 * (total of nodes in subtree)
 
+The total of nodes in subtree can help to implement some ordered function such as betwen_value(a, b), but it has to be updated at insertion and deletion.
+
 **Get**  
 straight-forward implementation
 
 ```
+				Pseucode
+
 Value	get_val(Node root, Key key)  
 {  
-	Pseucode
 	
 	Node x = root;  
 	while (x != null) 
@@ -129,7 +137,7 @@ _(We assume here that count of subtree not present in node)_
 * Key not in tree: add new node
 
 ```
-	Pseucode
+				Pseucode
 	
 	Node rec_put(Node x, Key key, Value val)
 	{
@@ -150,11 +158,11 @@ _(We assume here that count of subtree not present in node)_
 		root = rec_put(root, key, val);
 	}
 ```
-*we could have used an as efficient and simplier, not recursive algo, but we'll use this one for rb bst*
+*we could have used an as efficient and simplier, not recursive algo, but we'll use this one for rb-bst*
 
 **Cost**: 1 + lg N, depends on the way how keys come in, best case when the tree is compltetely balanced
 
-**property**: if N distinct keys are inserted in random order, the _expected height_ of tree is ~ 4,311 ln N, _worst heught_ is N
+**property**: if N distinct keys are inserted in random order, the _expected height_ of tree is ~ 4,311 ln N, _worst height_ is N
 
 depp deeper: see correspondance between quicksort and bst
 see 9.4-9.55
@@ -186,7 +194,7 @@ to delete a node with key _k_, search for node _t_ containing key _k_
  * Delete the minimum in _t_'s right subtree
  * put _x_ in _t_'s spot
 
-Problem: lead ton non-symmetric bst
+**Problem**: lead ton non-symmetric bst
 
 # 2-3 Search Tree
 
@@ -194,6 +202,8 @@ Allow 1 or 2 keys per node, node are either:
 
 * 2-node: 1 key, 2 child
 * 3-node: 2 keys, 3 child (one less, one between, one greater: **symmetric order**)
+
+[Insertion in 2-3 is some kind of magic] (https://www.youtube.com/watch?v=coRJrcIYbF4)
 
 **Perfect blance**: every path from root to null link has same length  
 
@@ -250,6 +260,12 @@ Each node is pointed to by precisely one link -> can encode color of links in no
  * Rotate to make lean left (if needed)
  * Repeat case 1 or case 2 up the tree (if needed)
 ![alt-text] (img/RB_Tree_insert-3-nodes.png "Insert into a tree with exactly 2 nodes")
+
+* Recursive code handle all those case:
+ * right child red, left child black: rotate left
+ * left child and left-left grandchild red: rotate right
+ * Both children red: flip colors  
+![alt-text] (img/recursive_rb.png "Recursive insertion")
 
 We can upgraded code from bst:
 
