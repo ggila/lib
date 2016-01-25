@@ -304,7 +304,7 @@ We can upgraded code from bst:
 
 ![alt-text] (img/geometric_application.png "Geometric application")
 
-* ranging search:
+* range search:
 
 	algo:
 	
@@ -318,5 +318,41 @@ We can upgraded code from bst:
  * R: number of matching key
 
 * given N horizontal and vertical line segments, find all intersections
+![alt-text] (img/sweepline_algo.png "Sweep Line Algorithm")
+
+    algo: Sweep line algorithm
+	
+ * x-coordinates define events
+ * horizontal segment (left endpoint): insert y-coordinate into BST
+ * horizontal segment (right endpoint): remove y-coordinate into BST
+ * vertical segment: range search for interval of y-endpoints
+
+	Proposition: N log N + R  
+
+ * Put x-coordinates on a PQ
+ * Insert y-coordinate into BST
+ * Delete y-coordinate from BST
+ * Range searches in BST
+
+## KD Tree
+
+Extension of ordered symbol-table to 2D keys:
+* Insert 2D key
+* Delete 
+* Search
+* Range search
+* Range count
+
+## Interval search
+
+Data structure to hold set of (overlapping) intervals
+* Insert an interval (lo, hi)
+* Search
+* Delete
+* Interval intersection query: given an interval (lo, hi), find all (or one) intervals in data structure that intersect (lo, hi)
+
+## Othogonal rectangle intersection search
+
+**Goal**: Find all intersections among set of N orthogonal rectangles
 
 <sub>ggilaber@student.42.fr
