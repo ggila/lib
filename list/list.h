@@ -11,16 +11,17 @@ typedef struct	s_list
 
 # define LIST_HEAD_INIT(name) (t_list){&(name), &(name)}
 # define LIST_HEAD(name) (name = LIST_HEAD_INIT(name))
+
 # define LIST_FOR_EACH(p, h) for (p = (h)->next; p != (h); p = p->next)
 
 /*
 ** ----
 ** struct objet
 ** {
-**     char c1;
 **     int n1;
-**     char c2;
 **     t_list list;
+**     char c1;
+**     char c2;
 ** }
 ** ----
 ** LIST_ENTRY(ptr, type, member)  --------->  +----------------------+
@@ -29,30 +30,32 @@ typedef struct	s_list
 **                           type ------------+----|_____________|   |
 **                                            |                      |
 **                                            | +------------------+ |
-**                                            | |      char c1     | |
-**                                            | +------------------+ |
-**  LIST_MEMBER(ptr, type, member, wanted) -> | +------------------+ |
 **                                            | |      int n1      | |
-**                         wanted ------------+-+-------->|__|     | |
-**                                            | +------------------+ |
-**                                            | +------------------+ |
-**                                            | |      char c2     | |
 **                                            | +------------------+ |
 **                            ptr ----------> | +------------------+ |
 **                                            | |    t_list list   | |
-**                         member ------------+-+--------->|____|  | |
+**                     lst_member ------------+-+--------->|____|  | |
+**                                            | +------------------+ |
+**                                            | +------------------+ |
+**                                            | |      char c1     | |
+**                                            | +------------------+ |
+**  LIST_MEMBER(ptr, type, member, wanted) -> | +------------------+ |
+**                                            | |      char c2     | |
+**                         member ------------+-+--------->|__|    | |
 **                                            | +------------------+ |
 **                                            |                      |
 **                                            +----------------------+
 ** ----
 */
 
-# define LIST_ENTRY(ptr, type, member) \
-				(type*)((char*)ptr - offsetof(type, member))
+# define LIST_ENTRY(ptr, type, lst_member) \
+				(type*)((char*)ptr - offsetof(type, lst_member))
 
-# define LIST_MEMBER(ptr, type, member, wanted) \
-	*(typeof(((type*)0->wanted))*)(LIST_ENTRY(ptr, type, member) + offsetof(type, wanted))
+# define LIST_MEMBER(ptr, type, lst_member, wanted) \
+				*(typeof(&(((type*)0)->wanted))) \
+					((char*)ptr -offsetof(type, lst_member) + offsetof(type, wanted))
 
-void			lst_add(t_list *head, t_list *new);
+void			lst_push_back(t_list *head, t_list *new);
+void			lst_push_front(t_list *head, t_list *new);
 
 #endif
