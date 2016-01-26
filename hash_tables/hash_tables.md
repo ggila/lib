@@ -5,11 +5,13 @@ Save items in a key-indexed table (index is a function of the key)
 **Hash function**: Method for computing array index from key
 
 **Issues**:
+
 * Computing hash function
 * Equallity test
 * Collision resolution
 
 **Classic space-time tradeoff**:
+
 * No space limitation: trivial hash function with key as index
 * No time limitation: trivial collosionresolution with sequential search
 * Space and time limitations (aka real world): hashing
@@ -17,6 +19,7 @@ Save items in a key-indexed table (index is a function of the key)
 ## Hash Functions
 
 **Idealistic goal**: scramble the keys uniformly to produce a table index
+
 * Efficiently computable
 * Each table index **equally likely** for each key
 
@@ -42,7 +45,9 @@ class exemple
 ```
 
 *Standard* recipe for user-defined types:
-* Combine each significant field using the 31x+ y rule
+
+
+* Combine each significant field using the 31x + y rule
 * if field is a primitive type, use wrapper type hashcode()
 * if field is null, return 0
 * if field is a reference, use hashcode()
@@ -106,6 +111,7 @@ When a new collides, find next empty slot, and put it here
 * Clustering less sensitive to poorly-design hash function
 
 **Linear probing**:
+
 * Less wasted space
 * Better cache performance
 
