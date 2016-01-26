@@ -1,6 +1,6 @@
 # Hash tables
 
-SAve items in a key-indexed table (index is a function of the key)
+Save items in a key-indexed table (index is a function of the key)
 
 **Hash function**: Method for computing array index from key
 
@@ -20,8 +20,10 @@ SAve items in a key-indexed table (index is a function of the key)
 * Efficiently computable
 * Each table index **equally likely** for each key
 
-**Requirement**:  x = y -> f\_hash(x) = f\_hash(y)
-**Highly desirable**: x != y -> f\_hash(x) != f\_hash(y)
+**Requirement**:  
+x = y -> hash(x) = hash(y)  
+**Highly desirable**:  
+x != y -> hash(x) != hash(y)
 
 ```
 
@@ -85,11 +87,12 @@ When a new collides, find next empty slot, and put it here
 
 **Note**: Array size M must be greater than number of key-value paired
 
-Proposition: Under uniform hashing assumption, the average number of probes in a linear probing hash table of size M that contains N = a*M key is:
+**Proposition**: Under uniform hashing assumption, the average number of probes in a linear probing hash table of size M that contains N = a*M key is:
 * search hit: ~ 0.5 (1 + 1/(1-a))
 * search miss/insert: ~ 0.5 (1 + 1/(1-a)<sup>2</sup>)
 
 **Parameters**:
+
 * M too large: too many empty array entries
 * M too small: search time blows up
 * Typical choice: a = N/M ~ 0.5
@@ -97,6 +100,7 @@ Proposition: Under uniform hashing assumption, the average number of probes in a
 ### Separate chaining VS Linear probing
 
 **Separate chaining**:
+
 * Easier to implement delete
 * Performance degrades gracefully
 * Clustering less sensitive to poorly-design hash function
@@ -114,11 +118,13 @@ Proposition: Under uniform hashing assumption, the average number of probes in a
 ## Hash tables VS BST
 
 **Hash tables**:
+
 * Simpler to code
 * No effective alternative for unordered keys
 * Faster for simple keys (a few arithmetic ops versus log N compares)
 
 **BST**:
+
 * Stronger performance guarantee
 * Support for ordered ST operations
 
