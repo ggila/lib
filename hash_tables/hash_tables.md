@@ -46,7 +46,6 @@ class exemple
 
 *Standard* recipe for user-defined types:
 
-
 * Combine each significant field using the 31x + y rule
 * if field is a primitive type, use wrapper type hashcode()
 * if field is null, return 0

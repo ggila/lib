@@ -6,11 +6,12 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 20:40:43 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/26 21:08:19 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/01/27 17:31:10 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
+#include <stdlib.h>
 
 static char	set_node(t_htnode h, char *str, void *value)
 {
@@ -24,6 +25,8 @@ static char	set_new_node(t_htnode h, char *str, void *value)
 {
 	t_htnode	*new;
 
+	while (h.next)
+		h = h.next;
 	if (!(new = malloc(sizeof(t_htnode))))
 		return (KO);
 	h.next = new;
@@ -36,7 +39,7 @@ char		ht_add(t_htnode hasht[], char *str, void *value)
 	unsigned long	i;
 
 	i = hash_djb2(str) % SIZE;
-	if (hasht[i].next == NULL)
+	if (hasht[i].value != NULL)
 		return (set_new_node(hasht[i], str, value));
 	else
 		return (set_node(hasht[i], str, value));
