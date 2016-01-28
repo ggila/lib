@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/28 23:44:09 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/01/28 23:59:15 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char			ht_init(t_hash_tbl *ht, int size
 					, unsigned long (*key_index)(const void *key));
 char			ht_put(t_hash_tb *ht, t_kv key_value);
 char			ht_putm(t_hash_tb *ht, t_kv key_value);
-void			*ht_get(t_hash_tbl *ht, char *str);
+void			*ht_get(t_hash_tbl *ht, void *key);
 void			ht_free(t_hash_tbl *ht);
 
 unsigned long	hash_djb2(const char *str);

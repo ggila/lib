@@ -6,32 +6,27 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 15:53:48 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/28 13:02:49 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/01/29 00:04:22 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 #include <stdlib.h>
 
-void	ht_free_node(t_hash_node h)
-{
-	if (h.next != NULL)
-	{
-		ht_free_node(h.next);
-		free(h.next);
-	}
-	free(h.key);
-}
-
-void	ht_free(t_hash_node hasht[])
+void	ht_free(t_hash_tbl *ht)
 {
 	int	i;
 
 	i = 0;
-	while (i < HT_SIZE)
+	while (i < ht[i]->size)
 	{
-		if (hasht[i].value != NULL)
-			ht_free_node(hasht[i]);
+		if (ht[i]->value != NULL)
+		{
+			free(ht[i]->key);
+			free(ht[i]->value);
+			free(ht[i]);
+		}
 		i++;
 	}
+	free(ht);
 }
