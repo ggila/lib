@@ -6,13 +6,13 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 21:07:26 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/27 19:53:21 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/01/28 13:02:49 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-void	*ht_get(t_htnode hasht[], char *str)
+void	*ht_get(t_hash_node hasht[], char *str)
 {
 	
 }
