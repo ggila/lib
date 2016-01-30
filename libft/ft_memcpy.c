@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/28 10:19:24 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/30 18:09:38 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/01/30 17:07:14 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/01/30 18:05:43 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2);
+#include <stdlib.h>
 
-char	ft_strequ(const char *s1, const char *s2)
+void	ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return (!!ft_strcmp(s1, s2));
+	size_t	i;
+
+	if (!dst)
+		return;
+	i = 0;
+	while (i < n / 8)
+	{
+		*((long unsigned int*)dst + i) = *((long unsigned int*)src + i);
+		i += 8;
+	}
+	while (i < n)
+	{
+		((char*)dst)[i] = ((char*)src)[i];
+		++i;
+	}
+	return;
 }
