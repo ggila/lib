@@ -6,7 +6,25 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/05 11:31:09 by ggilaber         ###   ########.fr       */
+||||||| merged common ancestors
+<<<<<<< Temporary merge branch 1:hash_tables/ht_puts.c
+/*   Updated: 2016/02/05 08:31:04 by ggilaber         ###   ########.fr       */
+||||||| merged common ancestors
+/*   Updated: 2016/01/28 23:58:04 by ggilaber         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/05 11:31:09 by ggilaber         ###   ########.fr       */
+>>>>>>> Temporary merge branch 2:hash_tables/ht_puts.c
+=======
+<<<<<<< HEAD:hash_tables/ht_puts.c
+/*   Updated: 2016/02/05 11:31:09 by ggilaber         ###   ########.fr       */
+||||||| merged common ancestors
+/*   Updated: 2016/01/28 23:58:04 by ggilaber         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/05 08:31:04 by ggilaber         ###   ########.fr       */
+>>>>>>> origin:hash_tables/ht_puts.c
+>>>>>>> 415d971bf9b76099d0caf80bc064b33dd132923d
 /*                                                                            */
 /* ************************************************************************** */
 
