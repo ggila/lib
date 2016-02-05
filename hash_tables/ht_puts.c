@@ -1,57 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ht_put.c                                           :+:      :+:    :+:   */
+/*   ht_puts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/28 23:58:04 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/05 11:31:09 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 #include <stdlib.h>
 
-static char	set_new_node(t_hash_node *node, t_kv *kv, char malloc)
+static char	set_new_node(t_hash_node *node, t_kv *kv, char m)
 {
 	t_hash_node	*new;
 
 	if (!(new = malloc(sizeof(t_hash_node))))
 		return (KO);
-	if (malloc)
+	if (m)
 	{
-		if (!(new = malloc(sizeof(kv->key_size))))
+		if (!(new->kv.key = malloc(sizeof(kv->key_size))))
 			return (KO);
-		if (!(new = malloc(sizeof(kv->value_size))))
+		if (!(new->kv.value = malloc(sizeof(kv->value_size))))
 			return (KO);
-		ft_memcopy(new->key, kv->key, kv->key_size);
-		ft_memcopy(new->value, kv->value, kv->value_size);
+		ft_memcpy(new->kv.key, kv->key, kv->key_size);
+		ft_memcpy(new->kv.value, kv->value, kv->value_size);
 	}
 	else
 	{
-		new->key = kv->key;
-		new->value = kv->value;
+		new->kv.key = kv->key;
+		new->kv.value = kv->value;
 	}
-	new->key_size = kv->key_size;
-	new->value_size = kv->value_size;
+	new->kv.key_size = kv->key_size;
+	new->kv.value_size = kv->value_size;
 	new->next = NULL;
 	node->next = new;
 	return (OK);
 }
 
-static char	reset_value(t_hash_node *node, t_kv *kv, char malloc)
+static char	reset_value(t_hash_node *node, t_kv *kv, char m)
 {
-	free(node->value);
-	if (malloc)
+	if (m)
 	{
-		if (!(new = malloc(sizeof(kv->value_size))))
+		free(node->kv.value);
+		if (!(node->kv.value = malloc(sizeof(kv->value_size))))
 			return (KO);
-		ft_memcopy(node->value, kv->value, kv->value_size);
+		ft_memcpy(node->kv.value, kv->value, kv->value_size);
 	}
 	else
-		node->value = kv->value;
-	node->value_size;
+		node->kv.value = kv->value;
+	node->kv.value_size;
 	return (OK);
 }
 
