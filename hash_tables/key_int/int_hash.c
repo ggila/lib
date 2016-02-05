@@ -12,7 +12,7 @@
 
 #include "hash_tables.h"
 
-int	int_hash(int i)
+const unsigned long	int_hash(const void *i)
 {
-	return (i)
+	return (*(int*)i);
 }

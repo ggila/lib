@@ -55,27 +55,27 @@ static char	reset_value(t_hash_node *node, t_kv *kv, char m)
 	return (OK);
 }
 
-static char	ht_add(t_hash_tb *ht, t_kv *key_value, char malloc)
+static char	ht_add(t_hash_tbl *ht, t_kv *key_value, char m)
 {
 	unsigned long	i;
 	t_hash_node		*node;
 
 	i = ht->key_hash(key_value->value) % ht->size;
 	node = ht->nodes[i];
-	while (ht->key_cmp(key_value->key, key) && node->next)
+	while (ht->key_cmp(key_value->key, node->kv.key) && node->next)
 		node = node->next;
 	if (node->next)
-		return (reset_value(node, value));
+		return (reset_value(node, key_value, m));
 	else
-		return (set_new_node(node, key_value));
+		return (set_new_node(node, key_value, m));
 }
 
-char	ht_putm(t_hash_tb *ht, t_kv *key_value)
+char	ht_putm(t_hash_tbl *ht, t_kv *key_value)
 {
 	return (ht_add(ht, key_value, 1));
 }
 
-char	ht_put(t_hash_tb *ht, t_kv *key_value)
+char	ht_put(t_hash_tbl *ht, t_kv *key_value)
 {
 	return (ht_add(ht, key_value, 0));
 }

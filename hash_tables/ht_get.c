@@ -12,17 +12,17 @@
 
 #include "hash_tables.h"
 
-void	*ht_get(t_hash_tbl *ht, void *key);
+void	*ht_get(t_hash_tbl *ht, void *key)
 {
 	unsigned long	i;
 	t_hash_node		*node;
 
-	i = ht->key_hash(key_value->value) % ht->size;
+	i = ht->key_hash(key) % ht->size;
 	node = ht->nodes[i];
-	while (ht->key_cmp(key_value->key, key) && node->next)
+	while (ht->key_cmp(node->kv.key, key) && node->next)
 		node = node->next;
 	if (node->next)
-		return (node->value);
+		return (node->kv.value);
 	else
 		return (NULL);
 }

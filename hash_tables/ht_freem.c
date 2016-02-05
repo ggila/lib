@@ -19,5 +19,13 @@ void	ht_freem(t_hash_tbl *ht)
 
 	i = 0;
 	while (i < ht->size)
-		free(ht->nodes[i++]);
+	{
+		if (ht->nodes[i]->kv.value != NULL)
+		{
+			free(ht->nodes[i]->kv.key);
+			free(ht->nodes[i]->kv.value);
+			free(ht->nodes[i]);
+		}
+		i++;
+	}
 }

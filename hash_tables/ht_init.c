@@ -12,14 +12,14 @@
 
 #include "hash_tables.h"
 
-char	ht_init(t_hash_tbl ht, int size
-			, int (*key_cmp)(const void *a, const void *b)
-			, unsigned long (*key_hash)(const void *key))
+char			ht_init(t_hash_tbl *const ht, const int size,
+					const int (*key_cmp)(const void *a, const void *b),
+					const unsigned long (*key_hash)(const void *key))
 {
-	if ((ht.nodes = (t_hash_node**)malloc(sizeof(t_hash_node) * size)) == NULL)
+	if ((ht->nodes = (t_hash_node**)malloc(sizeof(t_hash_node) * size)) == NULL)
 		return (KO);
-	ht.size = size;
-	ht.key_cmp = key_cmp;
-	ht.key_hash = key_hash;
+	ht->size = size;
+	ht->key_cmp = key_cmp;
+	ht->key_hash = key_hash;
 	return (OK);
 }

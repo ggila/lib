@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	int_cmp(int *a, int *b)
+const int	int_cmp(const void *a, const void *b)
 {
-	return (*a - *b);
+	return (*(int*)a - *(int*)b);
 }
