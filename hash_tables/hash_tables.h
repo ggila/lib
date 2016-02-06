@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/05 11:43:09 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/06 12:18:37 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,17 @@ typedef struct	s_hash_node
 	struct s_hash_node	*next;
 }				t_hash_node;
 
+/*
+**  t_hash_tbl:
+**     - **nodes and not *nodes because it makes ht_put easier
+*/
+
 typedef struct	s_hash_tbl
 {
 	t_hash_node		**nodes;
 	size_t			size;
-	const int (*key_cmp)(const void *a, const void *b);
-	const unsigned long (*key_hash)(const void *key);
+	int				(*key_cmp)();
+	unsigned long	(*key_hash)();
 }				t_hash_tbl;
 
 /*
@@ -59,9 +64,8 @@ typedef struct	s_hash_tbl
 **                   key_hash(key) % size
 */
 
-char			ht_init(t_hash_tbl *const ht, const int size,
-					const int (*key_cmp)(const void *a, const void *b),
-					const unsigned long (*key_hash)(const void *key));
+char			ht_init(t_hash_tbl *const ht, int size,
+					int (*key_cmp)(), unsigned long (*key_hash)());
 
 /*
 **  ht_put and ht_putm:
@@ -73,8 +77,8 @@ char			ht_init(t_hash_tbl *const ht, const int size,
 **         - here is an exemple of macro which setup t_kv:
 */
 
-char			ht_put(t_hash_tbl *ht, t_kv *key_value);
-char			ht_putm(t_hash_tbl *ht, t_kv *key_value);
+char			ht_put(t_hash_tbl *const ht, const t_kv *const key_value);
+char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
 
 /*
 **  ht_get:
@@ -105,8 +109,8 @@ int				ft_strcmp(const char *s1, const char *s2);
 ** key_int:
 */
 
-const unsigned long		int_hash(const void *i);
-const int		int_cmp(const void *a, const void *b);
+unsigned long	int_hash(const int *i);
+int				int_cmp(const int *a, const int *b);
 
 /*
 ** lib functions
