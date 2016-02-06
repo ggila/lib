@@ -6,13 +6,13 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 09:07:13 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/05 09:07:57 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/06 16:50:04 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-const unsigned long	int_hash(const void *i)
+unsigned long	int_hash(const int *i)
 {
-	return (*(int*)i);
+	return (*i);
 }

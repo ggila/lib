@@ -6,14 +6,14 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/06 12:19:06 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/06 20:22:42 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-static char	set_new_node(t_hash_node *const node, const t_kv *const kv, char m)
+static char	set_new_node(t_hash_node *node, const t_kv *const kv, char m)
 {
 	t_hash_node	*new;
 
@@ -36,7 +36,7 @@ static char	set_new_node(t_hash_node *const node, const t_kv *const kv, char m)
 	new->kv.key_size = kv->key_size;
 	new->kv.value_size = kv->value_size;
 	new->next = NULL;
-	node->next = new;
+	node ? (node->next = new) : (node = new);
 	return (OK);
 }
 
@@ -51,7 +51,7 @@ static char	reset_value(t_hash_node *const node, const t_kv *const kv, char m)
 	}
 	else
 		node->kv.value = kv->value;
-	node->kv.value_size;
+	node->kv.value_size = kv->value_size;
 	return (OK);
 }
 
@@ -63,7 +63,7 @@ static char	ht_add(t_hash_tbl *const ht,
 
 	i = ht->key_hash(key_value->value) % ht->size;
 	if ((node = ht->nodes[i]) == NULL)
-		return (set_new_node(ht->nodes + i, key_value, m));
+		return (set_new_node(ht->nodes[i], key_value, m));
 	while (ht->key_cmp(key_value->key, node->kv.key) && node->next)
 		node = node->next;
 	if (node->next)

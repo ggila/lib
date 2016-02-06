@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/06 12:18:37 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/06 18:27:02 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,14 @@ void			ht_free(t_hash_tbl *ht);
 void			ht_freem(t_hash_tbl *ht);
 
 /*
-** key_string:
+**  ht_print 
+*/
+
+void		ht_print(t_hash_tbl *ht, void (*key_print)(),
+				void (*value_print)());
+
+/*
+**  key_string:
 **     - key_cmp: ft_strcmp
 **     - key_hash: hash_djb2
 */
@@ -106,16 +113,17 @@ unsigned long	hash_djb2(const char *str);
 int				ft_strcmp(const char *s1, const char *s2);
 
 /*
-** key_int:
+**  key_int:
 */
 
 unsigned long	int_hash(const int *i);
 int				int_cmp(const int *a, const int *b);
 
 /*
-** lib functions
+**  lib functions
 */
 
 void			ft_memcpy(void *dst, const void *src, size_t n);
+void			ft_bzero(void *s, size_t n);
 
 #endif
