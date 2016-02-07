@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 11:06:19 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/06 16:50:10 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/07 14:41:15 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	int_cmp(const int *a, const int *b)
 {
-	return (*a - *b);
+	return (*a == *b);
 }

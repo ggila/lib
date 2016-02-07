@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 17:19:16 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/07 12:43:38 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/07 14:49:46 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void		ht_print(t_hash_tbl *ht, void (*key_print)(),
 			else
 				node_print(ht->nodes[i], key_print, value_print);
 		}
+		printf("---------------------\n");
 	}
 }
