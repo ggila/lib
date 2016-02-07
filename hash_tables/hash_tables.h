@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/07 14:47:27 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/07 18:11:16 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define HASH_TABLES_H
 
 #include <stdlib.h>
-
-# define KEY_VAL(a, b) (t_kv){a, size(a), b, size(b)}
-# define ADD(h, a, b) {t_kv k = KEY_VAL(a, b); ht_add(h, &k)}
 
 /*
 ** separate chaining hash tables implemententation:
@@ -34,6 +31,8 @@ typedef struct	s_kv
 	void	*value;
 	size_t	value_size;
 }				t_kv;
+
+# define KV_NULL (t_kv){0, -1, 0, -1}
 
 typedef struct	s_hash_node
 {
@@ -74,11 +73,21 @@ char			ht_init(t_hash_tbl *const ht, int size,
 **         - ht_putm malloc space for key and value snd copy them
 **         - Use one or the other, not both, or implement your own free func
 **     - t_kv key_value
-**         - here is an exemple of macro which setup t_kv:
+**         - here is an exemple of helping macros:
+**           # define KEY_VAL(a, b) (t_kv){a, size(a), b, size(b)}
+**           # define ADD(h, a, b) {t_kv k = KEY_VAL(a, b); ht_add(h, &k)}
 */
 
 char			ht_put(t_hash_tbl *const ht, const t_kv *const key_value);
 char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
+
+/*
+**  ht_fill:
+**     - add a t_kv table to a hash table 
+**     -table must end with KV_NULL
+*/
+
+void			ht_fill(t_hash_tbl *const ht, t_kv kv_tab[]);
 
 /*
 **  ht_get:
@@ -86,6 +95,13 @@ char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
 */
 
 void			*ht_get(t_hash_tbl *ht, void *key);
+
+/*
+**  ht_isset:
+**     - return 1 or 0
+*/
+
+char			ht_isset(t_hash_tbl *ht, void *key);
 
 /*
 **  ht_free and ht_freem
@@ -109,15 +125,15 @@ void		ht_print(t_hash_tbl *ht, void (*key_print)(),
 **     - key_hash: hash_djb2
 */
 
-unsigned long	hash_djb2(const char *str);
 int				ft_strcmp(const char *s1, const char *s2);
+unsigned long	hash_djb2(const char *str);
 
 /*
 **  key_int:
 */
 
-unsigned long	int_hash(const int *i);
 int				int_cmp(const int *a, const int *b);
+unsigned long	int_hash(const int *i);
 
 /*
 **  lib functions

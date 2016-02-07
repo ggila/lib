@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_cmp.c                                          :+:      :+:    :+:   */
+/*   ht_fill.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/28 11:06:19 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/07 14:59:29 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/02/07 16:55:40 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/02/07 18:11:27 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-int	int_cmp(const int *a, const int *b)
+void	ht_fill(t_hash_tbl *const ht, t_kv kv_tab[])
 {
-	return (*a - *b);
+	int	i;
+
+	i = 0;
+	while (kv_tab[i].key_size != -1)
+		ht_put(ht, &(kv_tab[i++]));
 }

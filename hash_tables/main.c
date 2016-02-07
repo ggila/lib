@@ -24,12 +24,12 @@ int main(void)
 	while (++i < 30)
 	{
 		r = random();
-		ht_putm(&ht, (t_kv[]){str[i%5], strlen(str[i%5]) + 1, &i, 4});
+		ht_put(&ht, (t_kv[]){str[i%5], strlen(str[i%5]) + 1, str[i%5], strlen(str[i%5]) + 1});
 	}
 	ht_print(&ht, print_str, print_int);
 	printf("%d\n", *(int*)ht_get(&ht, "aa"));
 	printf("%d\n", *(int*)ht_get(&ht, "sdf"));
 	printf("%d\n", *(int*)ht_get(&ht, "sefs"));
-	ht_freem(&ht);
+	ht_free(&ht);
 	return(0);
 }
