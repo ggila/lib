@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 10:00:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 10:45:34 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/08 19:20:09 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@
 
 void			*ht_getnextkv(t_hash_tbl *ht)
 {
-	static int			i = 0;
+	static int			i = -1;
 	static t_hash_node	*node = NULL;
 
 	if (i == ht->size)
-		i = 0;
+		i = -1;
 	if (node && node->next)
 		node = node->next;
 	else
 	{
-		printf("%d\n", i);
+		i++;
 		while ((i < ht->size) && (ht->nodes[i] == NULL))
 			i++;
 		node = (i == ht->size) ? NULL : ht->nodes[i];
 	}
-	printf("%p\n", &node->kv);
-	return (node ? NULL : &(node->kv));
+	return (node ? &(node->kv) : NULL);
 }

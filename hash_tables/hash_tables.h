@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 10:46:38 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/08 19:01:02 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void		ht_print(t_hash_tbl *ht, void (*key_print)(),
 
 int				ft_strcmp(const char *s1, const char *s2);
 unsigned long	hash_djb2(const char *str);
+void			str_print(const char *str);
 
 /*
 **  key_int:
@@ -142,6 +143,7 @@ unsigned long	hash_djb2(const char *str);
 
 int				int_cmp(const int *a, const int *b);
 unsigned long	int_hash(const int *i);
+void			int_print(const int *i);
 
 /*
 **  lib functions
