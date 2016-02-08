@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ht_fill.c                                          :+:      :+:    :+:   */
+/*   ht_getnextkv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 16:55:40 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 08:21:41 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/02/08 10:00:07 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/02/08 10:45:34 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-void	ht_fill(t_hash_tbl *const ht, const t_kv kv_tab[])
-{
-	int	i;
+#include <stdio.h>
 
-	i = 0;
-	while (kv_tab[i].key_size != -1)
-		ht_put(ht, &(kv_tab[i++]));
+void			*ht_getnextkv(t_hash_tbl *ht)
+{
+	static int			i = 0;
+	static t_hash_node	*node = NULL;
+
+	if (i == ht->size)
+		i = 0;
+	if (node && node->next)
+		node = node->next;
+	else
+	{
+		printf("%d\n", i);
+		while ((i < ht->size) && (ht->nodes[i] == NULL))
+			i++;
+		node = (i == ht->size) ? NULL : ht->nodes[i];
+	}
+	printf("%p\n", &node->kv);
+	return (node ? NULL : &(node->kv));
 }
