@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 19:01:02 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:18:07 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HASH_TABLES_H
 
 #include <stdlib.h>
+#include "libft.h"
 
 /*
 ** separate chaining hash tables implemententation:
@@ -21,8 +22,12 @@
 **           - ht_get() return null if key not found
 */
 
-# define OK 0
-# define KO -1
+# ifndef OK
+#  define OK 0
+# endif
+# ifndef KO
+#  define KO 1
+# endif
 
 typedef struct	s_kv
 {
@@ -144,12 +149,5 @@ void			str_print(const char *str);
 int				int_cmp(const int *a, const int *b);
 unsigned long	int_hash(const int *i);
 void			int_print(const int *i);
-
-/*
-**  lib functions
-*/
-
-void			ft_memcpy(void *dst, const void *src, size_t n);
-void			ft_bzero(void *s, size_t n);
 
 #endif
