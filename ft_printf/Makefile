@@ -46,7 +46,7 @@ O_FILE = $(addprefix $(O_DIR)/, $(FILE:.c=.o))
 CC = gcc
 
 # C flags
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
