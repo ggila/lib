@@ -3,11 +3,10 @@
 
 int main(void)
 {
-	char buf[] = { 'A', 'B', 'C' , 'D' , 'E' , 'F' , 'G' , 'H' , 'I' , 'J' , 'K', 'L', 'M', 'N', 'O', 'P', 'Q'};
+//	const char *str = "123sdfg";
 
-//	ft_printf("abc\n\\\\\\\n%s\n%c%c%c%c\n", "abc",'a','a','a','a');
-//	ft_printf("\n");
-//	ft_printf("%d\n%s: %d\nf: %f\n%.5f\n",2,"line",4,1.2f, 1.23456f);
-	ft_bzero(buf + 2, 11);
+//	printf("%d\n",read_number(&str));
+//	printf("%s\n", str);
+	printf("%.8f\n", 1.234f);
 	return (0);
 }
