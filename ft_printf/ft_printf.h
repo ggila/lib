@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:06:55 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 19:00:51 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/11 20:07:41 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_print_fd(int fd, const char *format, ...);
+int		ft_printf_fd(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);
 void	my_printf(int fd, const char *format, va_list args);
 void	my_write(int fd, const char *str, size_t len);
