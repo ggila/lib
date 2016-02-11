@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 17:47:40 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 17:51:57 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/11 19:08:26 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 
 #define MASK_PTR 0xf000000000000000
 
-void	write_hex(int fd, int nb)
+void	write_hex(int fd, unsigned int nb)
 {
 	char					str[16];
 	int						i;
 	char					add[16];
 	long long unsigned int	p;
 
-	ft_memcpy(str, "0123456789abcdef", 17);
+	ft_memcpy(str, "0123456789abcdef", 16);
 	p = (long long unsigned int)nb;
 	i = -1;
 	while (++i < 16)
 	{
-		add[i] = str[(nb & MASK_PTR) >> 60];
+		add[i] = str[(p & MASK_PTR) >> 60];
 		p = p << 4;
 	}
 	i = 0;
