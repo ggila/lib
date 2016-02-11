@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:22:01 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 17:47:17 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/11 19:01:32 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ void	write_arg(int fd, const char **str, va_list args)
 	else if (**str == 'c')
 		write_char(fd, va_arg(args, int));
 	else if (**str == '%')
-	{
 		my_write(1, "%", 1);
-		(*str)++;
-	}
 	else if (**str == 'x')
-		write_hex(fd, va_args(args, int));
+		write_hex(fd, va_arg(args, unsigned int));
 	else if (**str == 'f')
 		write_float(fd, (float)va_arg(args, double), DEFAULT_FLOAT_PRECISION);
 	else

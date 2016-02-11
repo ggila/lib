@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:06:55 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 17:49:29 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/11 19:00:51 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	my_write(int fd, const char *str, size_t len);
 void	write_float(int fd, float x, int dec);
 void	write_arg(int fd, const char **str, va_list args);
 void	write_ptr(int fd, void *ptr);
-void	write_hex(int fd, int *nb);
+void	write_hex(int fd, unsigned int nb);
 int		read_number(const char **str);
 size_t	ft_strlen(const char *str);
 void	ft_putnbr_fd(int fd, int n);
