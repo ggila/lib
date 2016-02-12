@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 21:40:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/12 09:21:13 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 11:34:39 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "libbft.h"
+#include "libft.h"
 #include "options.h"
 #include "ft_printf.h"
 
@@ -33,7 +33,7 @@ static void	char_opt(char *arg)
 		while (str_op[j] && (str_op[j] != arg[i]))
 			j++;
 		if (str_op[j])
-			g_flag &= (MASK<<j);
+			g_flag &= MASK<<j;
 		else
 			return (KO);
 		i++;
