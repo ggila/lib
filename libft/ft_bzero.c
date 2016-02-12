@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 18:05:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/09 10:54:24 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:32:35 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_bzero(void *dst, size_t n)
 	int8_t	*p2;
 
 	if (!dst)
-		return;
+		return ;
 	p1 = (int64_t*)dst;
 	p2 = (int8_t*)dst;
 	i = 0;
@@ -35,5 +35,5 @@ void	ft_bzero(void *dst, size_t n)
 		p2[i] = (int8_t)0;
 		++i;
 	}
-	return;
+	return ;
 }

@@ -15,22 +15,14 @@
 #    $* -> nom fichier sans suffixe
 ###
 
-NAME = ft_printf.a
+NAME = options.a
 
 CC = gcc
 
-SRC = ft_printf.c\
-	ft_printf_fd.c\
-	ft_putnbr_fd.c\
-	my_printf.c\
-	my_write.c\
-	read_number.c\
-	write_arg.c\
-	write_float.c\
-	write_hex.c\
-	write_ptr.c
+SRC = check_options.c\
+	usage.c
 
-INC = ../libft
+INC = -I../libft/ -I../ft_printf/
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -43,11 +35,11 @@ $(NAME) : $(OBJ)
 	ar rc  $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-$(OBJ_DIR)/%.o : %.c ft_printf.h | $(OBJ_DIR)
-	$(CC) $(FLAGS) -I $(INC) -c $< -o $@
+$(OBJ_DIR)/%.o : %.c options.h | $(OBJ_DIR)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 
 clean :
 	rm -rf $(OBJ_DIR)

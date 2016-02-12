@@ -6,12 +6,16 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 18:07:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/01/30 18:10:58 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:36:39 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #ifndef LIBFT_H
 # define LIBFT_H
+
+#include <stdlib.h>
 
 /*
 **		ft_mem
@@ -26,5 +30,6 @@ void	ft_memcpy(void *dst, const void *src, size_t n);
 
 char	ft_strequ(const char *s1, const char *s2);
 int		ft_strcmp(const char *s1, const char *s2);
+size_t	ft_strlen(const char* str);
 
 #endif

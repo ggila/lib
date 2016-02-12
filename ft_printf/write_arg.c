@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:22:01 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 19:01:32 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:30:51 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	write_char(int fd, char c)
 	my_write(fd, &c, 1);
 }
 
-void	write_arg(int fd, const char **str, va_list args)
+void		write_arg(int fd, const char **str, va_list args)
 {
 	if (**str == 'd')
 		ft_putnbr_fd(fd, va_arg(args, int));

@@ -15,22 +15,24 @@
 #    $* -> nom fichier sans suffixe
 ###
 
-NAME = ft_printf.a
+NAME = hash_tables.a
 
 CC = gcc
 
-SRC = ft_printf.c\
-	ft_printf_fd.c\
-	ft_putnbr_fd.c\
-	my_printf.c\
-	my_write.c\
-	read_number.c\
-	write_arg.c\
-	write_float.c\
-	write_hex.c\
-	write_ptr.c
+SRC = ht_fill.c\
+	ht_free.c\
+	ht_freem.c\
+	ht_get.c\
+	ht_getnextkv.c\
+	ht_init.c\
+	ht_isset.c\
+	ht_print.c\
+	ht_puts.c\
+	key_int/int_cmp.c\
+	key_int/int_hash.c\
+	key_string/djb2_hash.c
 
-INC = ../libft
+INC = -I../libft/ -I../ft_printf/ -I./
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -43,11 +45,11 @@ $(NAME) : $(OBJ)
 	ar rc  $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-$(OBJ_DIR)/%.o : %.c ft_printf.h | $(OBJ_DIR)
-	$(CC) $(FLAGS) -I $(INC) -c $< -o $@
+$(OBJ_DIR)/%.o : %.c hash_tables.h | $(OBJ_DIR)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR) obj/key_int obj/key_string
 
 clean :
 	rm -rf $(OBJ_DIR)

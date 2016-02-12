@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:06:55 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/11 20:07:41 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:26:57 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 # define DEFAULT_FLOAT_PRECISION 6
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include "libft.h"
+# include <stdarg.h>
+# include <stdlib.h>
+# include "libft.h"
 
 int		ft_printf_fd(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);

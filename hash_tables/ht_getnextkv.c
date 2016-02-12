@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 10:00:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 19:20:09 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:15:33 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void			*ht_getnextkv(t_hash_tbl *ht)
 {
-	static int			i = -1;
-	static t_hash_node	*node = NULL;
+	static unsigned int			i = -1;
+	static t_hash_node			*node = NULL;
 
 	if (i == ht->size)
 		i = -1;

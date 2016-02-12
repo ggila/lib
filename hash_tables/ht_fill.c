@@ -6,17 +6,17 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 16:55:40 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 08:21:41 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:34:55 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-void	ht_fill(t_hash_tbl *const ht, const t_kv kv_tab[])
+void	ht_fill(t_hash_tbl *const ht, t_kv const kv_tab[])
 {
 	int	i;
 
 	i = 0;
-	while (kv_tab[i].key_size != -1)
+	while (kv_tab[i].value != NULL)
 		ht_put(ht, &(kv_tab[i++]));
 }

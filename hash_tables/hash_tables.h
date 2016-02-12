@@ -6,15 +6,15 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/09 16:18:07 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:30:33 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HASH_TABLES_H
 # define HASH_TABLES_H
 
-#include <stdlib.h>
-#include "libft.h"
+# include <stdlib.h>
+# include "libft.h"
 
 /*
 ** separate chaining hash tables implemententation:
@@ -37,7 +37,7 @@ typedef struct	s_kv
 	size_t	value_size;
 }				t_kv;
 
-# define KV_NULL (t_kv){0, -1, 0, -1}
+# define KV_NULL (t_kv){NULL, 0, NULL, 0}
 
 typedef struct	s_hash_node
 {
@@ -88,7 +88,7 @@ char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
 
 /*
 **  ht_fill:
-**     - add a t_kv table to a hash table 
+**     - add a t_kv table to a hash table
 **     - table must end with KV_NULL
 */
 
@@ -126,11 +126,11 @@ void			ht_free(t_hash_tbl *ht);
 void			ht_freem(t_hash_tbl *ht);
 
 /*
-**  ht_print 
+**  ht_print
 */
 
-void		ht_print(t_hash_tbl *ht, void (*key_print)(),
-				void (*value_print)());
+void			ht_print(t_hash_tbl *ht, void (*key_print)(),
+					void (*value_print)());
 
 /*
 **  key_string:

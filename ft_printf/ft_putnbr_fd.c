@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 08:31:43 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/09 10:52:33 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:24:13 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putnbr_fd(int fd, int n)
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
-		return;
+		return ;
 	}
 	str = buf;
 	if (n < 0)

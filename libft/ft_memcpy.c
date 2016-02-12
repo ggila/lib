@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:07:14 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/06 19:09:37 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:33:18 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_memcpy(void *dst, const void *src, size_t n)
 	const char		*p2_src = (const char*)src;
 
 	if (!dst)
-		return;
+		return ;
 	p1_dst = (int64_t*)dst;
 	p2_dst = (char*)dst;
 	i = 0;
@@ -37,5 +37,5 @@ void	ft_memcpy(void *dst, const void *src, size_t n)
 		p2_dst[i] = p2_src[i];
 		++i;
 	}
-	return;
+	return ;
 }
