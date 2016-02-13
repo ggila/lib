@@ -33,19 +33,19 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rc  $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc  $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o : %.c libft.h | $(OBJ_DIR)
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)
 
 clean :
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all

@@ -1,4 +1,5 @@
 .*.sw*
+*.a
 .DS_Store
 obj
 a.out
