@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/12 19:30:33 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/13 19:42:57 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,6 @@ char			ht_init(t_hash_tbl *const ht, int size,
 
 char			ht_put(t_hash_tbl *const ht, const t_kv *const key_value);
 char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
-
-/*
-**  ht_fill:
-**     - add a t_kv table to a hash table
-**     - table must end with KV_NULL
-*/
-
-void			ht_fill(t_hash_tbl *const ht, const t_kv kv_tab[]);
 
 /*
 **  ht_get:
