@@ -6,12 +6,14 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 21:50:28 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/12 09:19:20 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/13 12:20:37 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECK_OPTIONS_H
 # define CHECK_OPTIONS_H
+
+# include <stdlib.h>
 
 /*
 ** - check_options read av and set the global flag define in project header.
@@ -22,35 +24,30 @@
 **     uint64_t   g_flag;
 */
 
-typdef struct	s_char_opt
+typedef struct		s_opt
 {
-	char	opt;
+	char	c_opt;
+	char	*str_opt;
+	int		bit;
 	char	*comment;
-}				t_char_opt;
+}					t_opt;
 
-typdef struct	s_str_opt
-{
-	char	*opt;
-	char	*comment;
-}				t_str_opt;
+# define OPT_NULL (t_opt){0, NULL, -1, NULL}
+# define IS_OPT_NULL(i) ((g_opt[i].c_opt == 0) && (g_opt[i].str_opt == NULL))
 
-static const t_char_opt char_opt[] = {{'h', "display this help"},
-										{0, NULL}};
-
-static const t_str_opt str_opt[] = {{"help", "display this help"},
-										{NULL, NULL}};
+static const t_opt	g_opt[] = {{'h', "help", 0, "display this help"},
+	{0, NULL, -1, NULL}};
 
 # define MASK 0x1
 # define MASK_HELP MASK<<0
-# define MASK_HELP MASK<<63
 
 /*
 ** check options return the number of char* of av read as options or -1
 ** if it fails
 */
 
-int		check_opt(int ac, const char **av);
-void	usage(const char *prog_name);
-void	print_help(const char *prog_name);
+int					check_opt(int ac, const char **av);
+void				usage(const char *prog_name);
+void				print_help(const char *prog_name);
 
 #endif

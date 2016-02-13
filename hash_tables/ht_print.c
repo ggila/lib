@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 17:19:16 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/09 16:00:16 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/13 10:20:43 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void			int_print(const int *i)
 	ft_printf("%d", *i);
 }
 
-static void	node_print(t_hash_node *node, void (*key_print)(),
-				void (*value_print)())
+static void		node_print(t_hash_node *node, void (*key_print)(),
+					void (*value_print)())
 {
 	while (node)
 	{
@@ -47,8 +47,8 @@ static void	node_print(t_hash_node *node, void (*key_print)(),
 	}
 }
 
-void		ht_print(t_hash_tbl *ht, void (*key_print)(),
-				void (*value_print)())
+void			ht_print(t_hash_tbl *ht, void (*key_print)(),
+					void (*value_print)())
 {
 	size_t	i;
 

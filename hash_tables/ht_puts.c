@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/07 14:46:03 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/13 10:23:44 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ static char	set_new_node(t_hash_node **node, const t_kv *const kv, char m)
 		return (KO);
 	if (m)
 	{
-		if (!(new->kv.key = malloc(sizeof(kv->key_size))))
-			return (KO);
-		if (!(new->kv.value = malloc(sizeof(kv->value_size))))
+		if (!(new->kv.key = malloc(sizeof(kv->key_size)))
+				|| !(new->kv.value = malloc(sizeof(kv->value_size))))
 			return (KO);
 		ft_memcpy(new->kv.key, kv->key, kv->key_size);
 		ft_memcpy(new->kv.value, kv->value, kv->value_size);
@@ -36,7 +35,10 @@ static char	set_new_node(t_hash_node **node, const t_kv *const kv, char m)
 	new->kv.key_size = kv->key_size;
 	new->kv.value_size = kv->value_size;
 	new->next = NULL;
-	*node ? ((*node)->next = new) : (*node = new);
+	if (*node)
+		(*node)->next = new;
+	else
+		*node = new;
 	return (OK);
 }
 
@@ -72,12 +74,12 @@ static char	ht_add(t_hash_tbl *const ht,
 		return (set_new_node(&node, key_value, m));
 }
 
-char	ht_putm(t_hash_tbl *const ht, const t_kv *const key_value)
+char		ht_putm(t_hash_tbl *const ht, const t_kv *const key_value)
 {
 	return (ht_add(ht, key_value, 1));
 }
 
-char	ht_put(t_hash_tbl *const ht, const t_kv *const key_value)
+char		ht_put(t_hash_tbl *const ht, const t_kv *const key_value)
 {
 	return (ht_add(ht, key_value, 0));
 }
