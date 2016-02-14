@@ -19,8 +19,7 @@ NAME = hash_tables.a
 
 CC = gcc
 
-SRC = ht_fill.c\
-	ht_free.c\
+SRC = ht_free.c\
 	ht_freem.c\
 	ht_get.c\
 	ht_getnextkv.c\
