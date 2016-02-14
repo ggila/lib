@@ -31,14 +31,39 @@
 # endif
 
 /*
+** those tokens should be replace:
+** <n> : cht name
+** <kt> : key type
+** <vt> : value type
+**
+*/
+
+/*
+** typdef fot key_value
+*/
+
+typedef <kt> t_<n>_key;
+typedef <vt> t_<n>_val;
+
+/*
 ** struct_const_key_value
 */
 
-typedef struct	s_ckv
+typedef struct	s_<n>
 {
-	const void	*key;
-	const void	*value;
-}				t_ckv;
+	const t_<n>_key		*key;
+	const t_<n>_value	*value;
+}				t_<n>;
+
+typedef struct	s_<n>_data
+{
+	const t_<n>_key		*key;
+	const t_<n>_value	*value;
+}				t_<n>_data;
+
+/*
+**
+*/
 
 /*
 ** struct {node, node->next}

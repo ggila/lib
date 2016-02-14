@@ -1,0 +1,6 @@
+name = magic
+
+key_type = const uint32_t
+value_type = {const char *const str, const int i}
+
+j
