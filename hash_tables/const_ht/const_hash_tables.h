@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_tables.h                                      :+:      :+:    :+:   */
+/*   const_hash_tables.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,8 +18,9 @@
 
 /*
 ** separate chaining hash tables implemententation:
-**     - null value are forbidden:
-**           - ht_get() return null if key not found
+** - no malloc
+**
+** -> read const_ht.c
 */
 
 # ifndef OK
@@ -29,25 +30,29 @@
 #  define KO 1
 # endif
 
-typedef struct	s_kv
-{
-	void	*key;
-	size_t	key_size;
-	void	*value;
-	size_t	value_size;
-}				t_kv;
+/*
+** struct_const_key_value
+*/
 
-# define KV_NULL (t_kv){NULL, 0, NULL, 0}
-
-typedef struct	s_hash_node
+typedef struct	s_ckv
 {
-	t_kv				kv;
-	struct s_hash_node	*next;
+	const void	*key;
+	const void	*value;
+}				t_ckv;
+
+/*
+** struct {node, node->next}
+*/
+
+typedef struct	s_const_hash_node
+{
+	t_ckv						ckv;
+	struct s_const_hash_node	*next;
 }				t_hash_node;
 
 /*
-**  t_hash_tbl:
-**     - **nodes and not *nodes because it makes ht_put easier
+**  t_const_hash_tbl:
+**     - **nodes: pointer to 
 */
 
 typedef struct	s_hash_tbl
