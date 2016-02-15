@@ -19,8 +19,6 @@
 /*
 ** separate chaining hash tables implemententation:
 ** - no malloc
-**
-** -> read const_ht.c
 */
 
 # ifndef OK
@@ -31,11 +29,11 @@
 # endif
 
 /*
-** those tokens should be replace:
-** <n> : name
-** <kt> : key type
-** <vt> : value type
-** <s> : number of key/value
+** tokens:
+**    <n> : name
+**    <kt> : key type
+**    <vt> : value type
+**    <s> : number of key/value
 **
 */
 
@@ -43,7 +41,7 @@
 #define HT_<N>_SIZE <htss>
 
 /*
-** typdef fot key_value
+** key_value
 **
 ** <kt> and <vt> must be const !
 */
@@ -52,7 +50,7 @@ typedef <kt> t_<n>_key;
 typedef <vt> t_<n>_val;
 
 /*
-** typedef for node
+** node
 */
 
 typedef struct	s_<n>_node
@@ -61,6 +59,10 @@ typedef struct	s_<n>_node
 	t_<n>_val	*val;
 }				t_<n>_node
 
+/*
+** dara
+*/
+
 typedef struct			s_<n>_data
 {
 	t_<n>_key		key;
@@ -68,12 +70,12 @@ typedef struct			s_<n>_data
 }						t_<n>_data;
 
 /*
-** typedef for htab
+** htab
 */
 
 typedef struct s_<n>_ht
 {
-	t_<n>_data	data[<ds>]
+	t_<n>_data	*data[<ds>]
 	t_<n>_node	node[<hts>];
 }
 
