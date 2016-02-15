@@ -32,18 +32,50 @@
 
 /*
 ** those tokens should be replace:
-** <n> : cht name
+** <n> : name
 ** <kt> : key type
 ** <vt> : value type
+** <s> : number of key/value
 **
 */
 
+#define DATA_<N>_SIZE <ds>
+#define HT_<N>_SIZE <htss>
+
 /*
 ** typdef fot key_value
+**
+** <kt> and <vt> must be const !
 */
 
 typedef <kt> t_<n>_key;
 typedef <vt> t_<n>_val;
+
+/*
+** typedef for node
+*/
+
+typedef struct	s_<n>_node
+{
+	t_<n>_key	*key;
+	t_<n>_val	*val;
+}				t_<n>_node
+
+typedef struct			s_<n>_data
+{
+	t_<n>_key		key;
+	t_<n>_val		val;
+}						t_<n>_data;
+
+/*
+** typedef for htab
+*/
+
+typedef struct s_<n>_ht
+{
+	t_<n>_data	data[<ds>]
+	t_<n>_node	node[<hts>];
+}
 
 /*
 ** struct_const_key_value
@@ -57,8 +89,8 @@ typedef struct	s_<n>
 
 typedef struct	s_<n>_data
 {
-	const t_<n>_key		*key;
-	const t_<n>_value	*value;
+	const t_<n>_key		key;
+	const t_<n>_value	value;
 }				t_<n>_data;
 
 /*
