@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 21:40:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/13 12:19:59 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/20 20:07:04 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "options.h"
 #include "ft_printf.h"
 
-extern uint64_t	g_flag;
+extern t_env	g_env;
 
 static char	check_char_opt(const char *arg)
 {
