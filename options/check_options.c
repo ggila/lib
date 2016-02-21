@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 21:40:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/20 20:07:04 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/21 18:42:55 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include "libft.h"
 #include "options.h"
 #include "ft_printf.h"
+#include "nm.h"
+#include "options.h"
 
-extern t_env	g_env;
-
-static char	check_char_opt(const char *arg)
+static char	check_char_opt(const char *arg, t_nm_flag *flag)
 {
 	int i;
 	int j;
@@ -35,7 +35,7 @@ static char	check_char_opt(const char *arg)
 		while (!IS_OPT_NULL(i) && (g_opt[j].c_opt != arg[i]))
 			j++;
 		if (g_opt[j].c_opt)
-			g_flag &= MASK << g_opt[j].bit;
+			flag->flag &= MASK << g_opt[j].bit;
 		else
 			return (KO);
 		i++;
@@ -43,7 +43,7 @@ static char	check_char_opt(const char *arg)
 	return (OK);
 }
 
-static char	check_str_opt(const char *arg)
+static char	check_str_opt(const char *arg, t_nm_flag *flag)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ static char	check_str_opt(const char *arg)
 			ft_strcmp(g_opt[i].str_opt, arg))
 		i++;
 	if (g_opt[i].str_opt)
-		g_flag &= MASK << g_opt[i].bit;
+		flag->flag &= MASK << g_opt[i].bit;
 	else
 		return (KO);
 	return (OK);
@@ -60,26 +60,28 @@ static char	check_str_opt(const char *arg)
 
 static char	is_option(const char *arg)
 {
-	if ((arg[0] != '-') || (ft_strcmp(arg, "--") == 0))
+	if ((arg[0] != '-') || (ft_strcmp(arg, "-") == 0))
 		return (KO);
 	return (OK);
 }
 
-int			check_opt(int ac, const char **av)
+int			check_opt(int ac, const char **av, t_nm_flag *flag)
 {
 	int	i;
 
 	i = 1;
 	while (i < ac)
 	{
+		if (ft_strcmp(av[i], "--") == 0)
+			return (i + 1);
 		if (is_option(av[i]) == KO)
 			break ;
-		if ((av[i][1] == '-' ? check_str_opt(av[i] + 2) :
-								check_char_opt(av[i] + 1)) == KO)
+		if ((av[i][1] == '-' ? check_str_opt(av[i] + 2, flag) :
+								check_char_opt(av[i] + 1, flag)) == KO)
 		{
 			ft_printf("%s: illegal option: %s\n", av[0], av[i]);
 			usage(av[0]);
-			return (EXIT_FAILURE);
+			return (KO);
 		}
 		i++;
 	}
