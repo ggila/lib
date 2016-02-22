@@ -23,7 +23,8 @@ SRC = ft_bzero.c\
 	ft_memcpy.c\
 	ft_strcmp.c\
 	ft_strequ.c\
-	ft_strlen.c
+	ft_strlen.c\
+	ft_strdup.c
 
 FLAGS = -Wall -Werror -Wextra
 

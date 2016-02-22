@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 18:07:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/13 12:09:22 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/02/22 15:37:57 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+
+# ifndef OK
+#  define OK 0
+# endif
+# ifndef KO
+#  define KO -1
+# endif
 
 /*
 **		ft_mem
@@ -29,5 +36,6 @@ void	ft_memcpy(void *dst, const void *src, size_t n);
 char	ft_strequ(const char *s1, const char *s2);
 int		ft_strcmp(const char *s1, const char *s2);
 size_t	ft_strlen(const char *str);
+char	*ft_strdup(const char *s);
 
 #endif
