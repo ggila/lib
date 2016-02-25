@@ -1,1 +1,1 @@
-lib/hash_tables/hash_tables.h
+../hash_tables/hash_tables.h

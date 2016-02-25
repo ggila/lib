@@ -30,7 +30,7 @@ SRC = ft_printf.c\
 	write_hex.c\
 	write_ptr.c
 
-INC = ../libft
+INC = ../inc
 
 FLAGS = -Wall -Werror -Wextra
 

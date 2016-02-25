@@ -31,7 +31,7 @@ SRC = ht_free.c\
 	key_int/int_hash.c\
 	key_string/djb2_hash.c
 
-INC = -I../libft/ -I../ft_printf/ -I./
+INC = -I../inc
 
 FLAGS = -Wall -Werror -Wextra
 
