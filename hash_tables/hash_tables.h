@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/13 19:42:57 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/15 14:36:39 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@ typedef struct	s_hash_node
 
 /*
 **  t_hash_tbl:
-**     - **nodes and not *nodes because it makes ht_put easier
+**     - **nodes and not *nodes because:
+**           - we don't want to malloc all space, not necessarly needed
+**           - it makes ht_put easier
+**     - size should be two times the expected number of element :
+**           - probes for search hit ~= 3/2
+**           - probes for miss->insertion hit ~= 5/2
 */
 
 typedef struct	s_hash_tbl
