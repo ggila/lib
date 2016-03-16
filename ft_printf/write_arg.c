@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:22:01 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/12 19:30:51 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/15 16:35:33 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	write_char(int fd, char c)
 
 void		write_arg(int fd, const char **str, va_list args)
 {
+	int	dec;
+
 	if (**str == 'd')
 		ft_putnbr_fd(fd, va_arg(args, int));
 	else if (**str == 's')
@@ -41,6 +43,7 @@ void		write_arg(int fd, const char **str, va_list args)
 	else
 	{
 		*str += 1;
-		write_float(fd, (float)va_arg(args, double), DEFAULT_FLOAT_PRECISION);
+		dec = read_number(str);
+		write_float(fd, (float)va_arg(args, double), dec);
 	}
 }

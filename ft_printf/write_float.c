@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 15:54:09 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/09 16:23:00 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/15 16:36:45 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #include <stdio.h>
 
 #define COMMA "."
+#define ZERO "0000000000000000000000"
 
 void	write_float(int fd, float x, int dec)
 {
 	int		i;
+	int		zero;
 	double	virg;
 
 	if (dec > 50)
@@ -26,7 +28,14 @@ void	write_float(int fd, float x, int dec)
 	my_write(1, COMMA, 1);
 	virg = x - (int)x;
 	i = 0;
+	zero = 0;
 	while (i++ < dec)
+	{
 		virg *= 10;
-	ft_putnbr_fd(fd, (int)virg);
+		if (((int)virg) == 0)
+			zero++;
+	}
+	my_write(1, ZERO, zero);
+	if ((int)virg)
+		ft_putnbr_fd(fd, (int)virg);
 }
