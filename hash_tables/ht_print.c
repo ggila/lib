@@ -6,14 +6,14 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 17:19:16 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/13 10:20:43 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/15 18:16:25 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 #include "ft_printf.h"
 
-#define NODE_HEADER "---------------------\nnode n*%lu:\n"
+#define NODE_HEADER "---------------------\nnode n*%d:\n"
 #define NODE_SEP "---/\n  /\n /-->"
 
 void			str_print(const char *str)
@@ -58,7 +58,7 @@ void			ht_print(t_hash_tbl *ht, void (*key_print)(),
 		ft_printf("size: %d\n", (int)ht->size);
 		while (++i < ht->size)
 		{
-			ft_printf(NODE_HEADER, i);
+			ft_printf(NODE_HEADER, (int)i);
 			if (ht->nodes[i] == NULL)
 				ft_printf("NULL\n");
 			else

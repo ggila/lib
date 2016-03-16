@@ -33,6 +33,12 @@ SRC = ht_free.c\
 
 INC = -I../inc
 
+LIB = libft\
+	ft_printf
+LIB_DIR = $(addsuffix /, $(addprefix ../, $(LIB)))
+LIB_INC = $(addprefix -I./, $(LIB_DIR))
+LIB_A = $(join $(LIB_DIR), $(addsuffix .a, $(LIB)))
+
 FLAGS = -Wall -Werror -Wextra
 
 OBJ_DIR = obj
@@ -43,6 +49,14 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@ar rc  $(NAME) $(OBJ)
 	@ranlib $(NAME)
+
+test: $(LIB_A) $(NAME)
+	$(CC) $(FLAGS) $(INC) $(NAME) $(LIB_A) test_ht.c
+
+$(LIB_A):
+	@echo 'build $(notdir $@)'
+	@make -C $(dir $@)
+	@make clean -C $(dir $@)
 
 $(OBJ_DIR)/%.o : %.c hash_tables.h | $(OBJ_DIR)
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
