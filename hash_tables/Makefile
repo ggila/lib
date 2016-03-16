@@ -31,6 +31,9 @@ SRC = ht_free.c\
 	key_int/int_hash.c\
 	key_string/djb2_hash.c
 
+TEST_SRC = test_ht.c\
+		   test_func.c
+
 INC = -I../inc
 
 LIB = libft\
@@ -43,6 +46,7 @@ FLAGS = -Wall -Werror -Wextra
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ_TEST = $(addprefix $(OBJ_DIR)/, $(SRC_TEST:.c=.o))
 
 all : $(NAME)
 
@@ -50,8 +54,8 @@ $(NAME) : $(OBJ)
 	@ar rc  $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-test: $(LIB_A) $(NAME)
-	$(CC) $(FLAGS) $(INC) $(NAME) $(LIB_A) test_ht.c
+test: $(LIB_A) $(NAME) $(OBJ_TEST)
+	$(CC) $(FLAGS) $(INC) $(NAME) $(LIB_A) $(SRC_TEST)
 
 $(LIB_A):
 	@echo 'build $(notdir $@)'

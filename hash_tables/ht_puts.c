@@ -6,12 +6,13 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/13 10:23:44 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/16 09:17:14 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 #include <unistd.h>
+#include "ft_printf.h"
 
 static char	set_new_node(t_hash_node **node, const t_kv *const kv, char m)
 {
