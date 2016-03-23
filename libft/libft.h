@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 18:07:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/16 15:42:46 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/23 11:37:59 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strcat(char *s1, const char *s2);
+char	**ft_strsplit(char const *s, char c);
 
 #endif
