@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 17:07:14 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/16 15:31:29 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/23 11:56:29 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_memset(void *dst, int c, size_t len)
 	size_t			i;
 	int64_t			*p1_dst;
 	char			*p2_dst;
-	int64_t			c_int64;
+	int64_t			long_c;
 
 	if (!dst)
 		return ;
@@ -26,14 +26,14 @@ void	ft_memset(void *dst, int c, size_t len)
 	p2_dst = (char*)dst;
 	i = 0;
 	while (i < 4)
-		long_c<<(8*i) = c;
-	while (8 * i < n)
+		long_c = ((int64_t)c)<<(8*i);
+	while (8 * i < len)
 	{
 		p1_dst[i] = long_c;
 		i++;
 	}
 	i *= 8;
-	while (i < n)
+	while (i < len)
 	{
 		p2_dst[i] = c;
 		++i;

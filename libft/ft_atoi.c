@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 13:53:00 by ggilaber          #+#    #+#             */
-/*   Updated: 2014/11/06 09:13:57 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/23 11:59:10 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static int	myatoi(const char *str, int n)
 	}
 	else
 		return (n);
+}
+
+static int	ft_isspace(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\r'
+			|| c == '\n' || c == '\v' || c == '\f')
+		return (1);
+	return (0);
 }
 
 int			ft_atoi(const char *str)
