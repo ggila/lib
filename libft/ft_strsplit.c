@@ -6,12 +6,12 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 20:04:06 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/23 11:36:07 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/03/29 15:28:19 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** to be redone, would be much more efficient with only one alloc
+** to be redone, would be much more efficient with only one malloc
 */
 
 #include "libft.h"
