@@ -1,5 +1,7 @@
 # Hash tables
 
+This contains general observations about hash\_tables, take a look at [hash\_tables] (https://github.com/ggila/lib/blob/master/hash_tables/hash_tables.h) for my implementation
+
 Save items in a key-indexed table (index is a function of the key)
 
 **Hash function**: Method for computing array index from key
