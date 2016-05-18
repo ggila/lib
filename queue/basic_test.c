@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:52:46 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 18:48:44 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/18 19:04:10 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ int main(void)
 	push(&q, &a);
 	push(&q, &b);
 	push(&q, &c);
+
+	printf("print queue:\n");
 	print_queue(&q);
+	printf("\npop() then print queue:\n");
+	pop(&q);
+	print_queue(&q);
+	printf("\n");
 	int i = 0;
 	int *d;
 	while (i++ < 6)

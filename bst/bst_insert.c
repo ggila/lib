@@ -6,25 +6,26 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 09:42:36 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 11:52:04 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/18 19:00:43 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bst.h"
+#include "stdio.h"
 
-static t_bst_node	**rec_insert(t_bst_node *bst, int val)
+static t_bst_node	**rec_insert(t_bst_node *node, int val)
 {
-	if (val < bst->val)
+	if (val < node->val)
 	{
-		if (bst->left)
-			return (rec_insert(bst->left, val));
-		return (&bst_left);
+		if (node->left)
+			return (rec_insert(node->left, val));
+		return (&node->left);
 	}
 	else
 	{
-		if (bst->right)
-			return (rec_insert(bst->right, val));
-		return (&bst_right);
+		if (node->right)
+			return (rec_insert(node->right, val));
+		return (&node->right);
 	}
 }
 
