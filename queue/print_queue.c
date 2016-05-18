@@ -1,50 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_queue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/18 11:52:46 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 18:48:44 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/05/18 18:40:30 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/05/18 18:51:37 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 #include <stdio.h>
 
-int main(void)
+void	print_queue(t_queue *queue)
 {
-	t_queue q;
-	int a = 1;
-	int b = 2;
-	int c = 3;
+	t_queue_node	*tmp;
 
-	queue_init(&q);
-	push(&q, &a);
-	push(&q, &b);
-	push(&q, &c);
-	print_queue(&q);
-	int i = 0;
-	int *d;
-	while (i++ < 6)
+	tmp = queue->next;
+	while (tmp != queue)
 	{
-		d = pop(&q);
-		if (d)
-			printf("%d\n", *d);
-		else
-			printf("NULL\n");
-	}
-	push(&q, &a);
-	push(&q, &a);
-	push(&q, &a);
-	i = 0;
-	while (i++ < 6)
-	{
-		d = pop(&q);
-		if (d)
-			printf("%d\n", *d);
-		else
-			printf("NULL\n");
+		printf("%p\n", tmp->addr);
+		tmp = tmp->next;
 	}
 }

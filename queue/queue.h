@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:19:21 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 12:12:44 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/18 18:44:00 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef t_queue_node t_queue;
 void	queue_init(t_queue *queue);
 void	*pop(t_queue *queue);
 char	push(t_queue *queue, void *addr);
+void	print_queue(t_queue *queue);
 
 #endif
