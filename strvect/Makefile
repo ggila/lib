@@ -21,7 +21,8 @@ CC = gcc
 
 SRC =  _strvect_extend.c\
 	strvect_init.c\
-	strvect_push_char.c
+	strvect_push_char.c\
+	strvect_push_str.c
 
 SRC_TEST = test.c
 

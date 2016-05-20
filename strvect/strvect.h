@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 15:53:39 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:22:28 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:47:11 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,13 @@ typedef struct	s_strvect
 
 char	strvect_init(t_strvect *vect);
 char	strvect_push_char(t_strvect *vect, char c);
-
-/*
-** Todo:
-** char    strvect_push_str(t_strvect *vect, char *str);
-*/
-
+char	strvect_push_str(t_strvect *vect, char *str);
 
 /*
 ** Internals
 */
 
-char	_strvect_extend(t_strvect *vect);
+char	_strvect_extend(t_strvect *vect, uint32_t needed);
 
 /*
 ** This implementation does not manage of a decreasing string
