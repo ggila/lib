@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:19:21 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 19:48:19 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:42:34 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 # define QUEUE_H
 
 # include "stdlib.h"
+# include <stdbool.h>
 
 /*
 ** Dumb implementation, no need of double link list, simple ll is good enough,
 ** with head and tail (push at tail, pop at head)
 */
-
-# ifndef OK
-#  define OK 0
-# endif
-# ifndef KO
-#  define KO 1
-# endif
 
 /*
 ** NULL value as add are forbidden in this implementation, pop() return NULL

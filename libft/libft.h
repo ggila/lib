@@ -6,21 +6,15 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 18:07:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/23 11:37:59 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:42:22 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdbool.h>
 # include <stdlib.h>
-
-# ifndef OK
-#  define OK 0
-# endif
-# ifndef KO
-#  define KO -1
-# endif
 
 int		ft_atoi(const char *str);
 

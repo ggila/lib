@@ -76,7 +76,7 @@ Bug: 1-in-billion bug
 int hash(key)
 {return (key.hashcode() & 0x7fffffff) % M;}
 ```
-OK
+true
 
 ## Collision
 

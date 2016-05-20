@@ -6,25 +6,19 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 09:39:13 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 17:01:26 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:41:48 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BST_H
 # define BST_H
 
-#include "stdlib.h"
+# include "stdlib.h"
+# include <stdbool.h>
 
 /*
 ** Do not forget to bzero t_bst at initialization
 */
-
-# ifndef OK
-#  define OK 0
-# endif
-# ifndef KO
-#  define KO 1
-# endif
 
 typedef struct	s_bst_node
 {

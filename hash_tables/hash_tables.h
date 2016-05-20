@@ -6,28 +6,23 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/15 14:36:39 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:42:10 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HASH_TABLES_H
 # define HASH_TABLES_H
 
-# include <stdlib.h>
 # include "libft.h"
+
+# include <stdbool.h>
+# include <stdlib.h>
 
 /*
 ** separate chaining hash tables implemententation:
 **     - null value are forbidden:
 **           - ht_get() return null if key not found
 */
-
-# ifndef OK
-#  define OK 0
-# endif
-# ifndef KO
-#  define KO 1
-# endif
 
 typedef struct	s_kv
 {

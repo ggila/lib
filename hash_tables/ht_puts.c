@@ -6,25 +6,26 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/16 09:17:14 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:23:10 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hash_tables.h"
-#include <unistd.h>
 #include "ft_printf.h"
+#include "hash_tables.h"
+
+#include <unistd.h>
 
 static char	set_new_node(t_hash_node **node, const t_kv *const kv, char m)
 {
 	t_hash_node	*new;
 
 	if (!(new = malloc(sizeof(t_hash_node))))
-		return (KO);
+		return (false);
 	if (m)
 	{
 		if (!(new->kv.key = malloc(sizeof(kv->key_size)))
 				|| !(new->kv.value = malloc(sizeof(kv->value_size))))
-			return (KO);
+			return (false);
 		ft_memcpy(new->kv.key, kv->key, kv->key_size);
 		ft_memcpy(new->kv.value, kv->value, kv->value_size);
 	}
@@ -40,7 +41,7 @@ static char	set_new_node(t_hash_node **node, const t_kv *const kv, char m)
 		(*node)->next = new;
 	else
 		*node = new;
-	return (OK);
+	return (true);
 }
 
 static char	reset_value(t_hash_node *const node, const t_kv *const kv, char m)
@@ -49,13 +50,13 @@ static char	reset_value(t_hash_node *const node, const t_kv *const kv, char m)
 	{
 		free(node->kv.value);
 		if (!(node->kv.value = malloc(sizeof(kv->value_size))))
-			return (KO);
+			return (false);
 		ft_memcpy(node->kv.value, kv->value, kv->value_size);
 	}
 	else
 		node->kv.value = kv->value;
 	node->kv.value_size = kv->value_size;
-	return (OK);
+	return (true);
 }
 
 static char	ht_add(t_hash_tbl *const ht,

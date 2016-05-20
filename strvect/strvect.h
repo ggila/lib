@@ -6,21 +6,15 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 15:53:39 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:06:48 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/20 17:22:28 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRVECT_H
 # define STRVECT_H
 
+#include <stdbool.h>
 #include <stdint.h>
-
-# ifndef OK
-#  define OK 0
-# endif
-# ifndef KO
-#  define KO 1
-# endif
 
 /*
 ** Do not forget to:
