@@ -4,3 +4,4 @@
 obj
 a.out
 cscope.out
+*.h.gch
