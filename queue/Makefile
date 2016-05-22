@@ -41,7 +41,7 @@ $(NAME) : $(OBJ)
 	@ranlib $(NAME)
 
 test: $(LIB_A) $(NAME) $(OBJ_TEST)
-	$(CC) $(FLAGS) $(INC) $(NAME) $(SRC_TEST)
+	$(CC) $(FLAGS) $(INC) $(NAME) $(SRC_TEST) $(LIB_A)
 
 $(OBJ_DIR)/%.o : %.c queue.h | $(OBJ_DIR)
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
