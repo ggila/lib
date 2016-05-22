@@ -29,7 +29,8 @@ SRC = ft_bzero.c\
 	ft_strlen.c\
 	ft_strdup.c\
 	ft_strrchr.c\
-	ft_strsplit.c
+	ft_strsplit.c\
+	ft_strcount.c
 
 FLAGS = -Wall -Werror -Wextra
 
