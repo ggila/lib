@@ -31,7 +31,7 @@ SRC = ht_free.c\
 	key_int/int_hash.c\
 	key_string/djb2_hash.c
 
-TEST_SRC = test_ht.c\
+SRC_TEST = test_ht.c\
 		   test_func.c
 
 INC = -I../inc

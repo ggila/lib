@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 10:44:09 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/16 11:10:23 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/25 19:22:46 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,29 @@
 #include "hash_tables.h"
 #include "test.h"
 
-void			test_insertion(t_hash_tbl *ht, int nb_insert)
+void			test_insertion(t_hash_tbl *ht, int nb_insert,
+					unsigned long (*hash_func)())
 {
-	int			i;
-	clock_t		begin;
-	clock_t		end;
-	double		time_spent;
+	int				i;
+	unsigned long	hash_ind;
+	int				nb_col;
+	clock_t			begin;
+	clock_t			end;
 
 	begin = clock();
 	i = 0;
+	nb_col = 0;
 	while (i < nb_insert)
 	{
-		ADD_INT(ht, i, i);
+		hash_ind = hash_func(i);
+		if (ht->nodes + hash_ind)
+			nb_col++;
+		ADD_INT(ht, hash_ind, i);
 		i++;
 	}
 	end = clock();
-	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-	ft_printf("\t%d -> %.7f\n", nb_insert, time_spent);
+	ft_printf("\t%d -> %.7f\t%d\n", nb_insert,
+			(double)(end - begin) / CLOCKS_PER_SEC, nb_col);
 }
 
 void			insertion_routine(char *mess, unsigned long (*hash_func)())
@@ -48,8 +54,8 @@ void			insertion_routine(char *mess, unsigned long (*hash_func)())
 	i = 0;
 	while (i < size)
 	{
-		ht_init(&ht, 2 * nb_ins[i], int_cmp, hash_func);
-		test_insertion(&ht, nb_ins[i]);
+		ht_init(&ht, 2 * nb_ins[i], int_cmp, best);
+		test_insertion(&ht, nb_ins[i], hash_func);
 		ht_freem(&ht);
 		i++;
 	}
@@ -58,6 +64,8 @@ void			insertion_routine(char *mess, unsigned long (*hash_func)())
 
 int				main(void)
 {
+	ft_printf("Test hash_tables.a\n"
+			"(mind that worst case has two less test)\n\n");
 	srand(time(NULL));
 	insertion_routine("random", my_rand);
 	insertion_routine("worst case", worst);

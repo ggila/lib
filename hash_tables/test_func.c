@@ -6,9 +6,11 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 10:51:56 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/03/16 10:58:50 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/25 18:51:58 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 unsigned long	worst(void)
 {
