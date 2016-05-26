@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:42:10 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:01:20 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct	s_hash_tbl
 **                   key_hash(key) % size
 */
 
-char			ht_init(t_hash_tbl *const ht, int size,
+bool			ht_init(t_hash_tbl *const ht, int size,
 					int (*key_cmp)(), unsigned long (*key_hash)());
 
 /*
@@ -83,8 +83,8 @@ char			ht_init(t_hash_tbl *const ht, int size,
 **           # define ADD(h, a, b) {t_kv k = KEY_VAL(a, b); ht_add(h, &k)}
 */
 
-char			ht_put(t_hash_tbl *const ht, const t_kv *const key_value);
-char			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
+bool			ht_put(t_hash_tbl *const ht, const t_kv *const key_value);
+bool			ht_putm(t_hash_tbl *const ht, const t_kv *const key_value);
 
 /*
 **  ht_get:
@@ -106,7 +106,7 @@ void			*ht_getnextkv(t_hash_tbl *ht);
 **     - return 1 or 0
 */
 
-char			ht_isset(t_hash_tbl *ht, void *key);
+bool			ht_isset(t_hash_tbl *ht, void *key);
 
 /*
 **  ht_free and ht_freem

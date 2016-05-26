@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:23:10 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:05:13 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ static char	ht_add(t_hash_tbl *const ht,
 		return (set_new_node(&node, key_value, m));
 }
 
-char		ht_putm(t_hash_tbl *const ht, const t_kv *const key_value)
+bool		ht_putm(t_hash_tbl *const ht, const t_kv *const key_value)
 {
 	return (ht_add(ht, key_value, 1));
 }
 
-char		ht_put(t_hash_tbl *const ht, const t_kv *const key_value)
+bool		ht_put(t_hash_tbl *const ht, const t_kv *const key_value)
 {
 	return (ht_add(ht, key_value, 0));
 }

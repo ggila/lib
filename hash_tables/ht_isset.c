@@ -6,13 +6,13 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 18:12:25 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/08 08:31:47 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:04:48 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_tables.h"
 
-char	ht_isset(t_hash_tbl *ht, void *key)
+bool	ht_isset(t_hash_tbl *ht, void *key)
 {
 	unsigned long	i;
 	t_hash_node		*node;
