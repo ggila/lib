@@ -55,7 +55,8 @@ $(NAME) : $(OBJ)
 	@ranlib $(NAME)
 
 test: $(LIB_A) $(NAME) $(OBJ_TEST)
-	$(CC) $(FLAGS) $(INC) $(NAME) $(SRC_TEST) $(LIB_A)
+	$(CC) $(FLAGS) -o test $(INC) $(NAME) $(SRC_TEST) $(LIB_A)
+	./test
 
 $(LIB_A):
 	@echo 'build $(notdir $@)'

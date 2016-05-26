@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 10:44:09 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/25 19:22:46 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:30:54 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 #include "hash_tables.h"
 #include "test.h"
 
-void			test_insertion(t_hash_tbl *ht, int nb_insert,
-					unsigned long (*hash_func)())
+void			test_insertion(t_hash_tbl *ht, int nb_insert)
 {
 	int				i;
-	unsigned long	hash_ind;
 	int				nb_col;
 	clock_t			begin;
 	clock_t			end;
@@ -30,10 +28,7 @@ void			test_insertion(t_hash_tbl *ht, int nb_insert,
 	nb_col = 0;
 	while (i < nb_insert)
 	{
-		hash_ind = hash_func(i);
-		if (ht->nodes + hash_ind)
-			nb_col++;
-		ADD_INT(ht, hash_ind, i);
+		ADD_INT(ht, i, i);
 		i++;
 	}
 	end = clock();
@@ -54,8 +49,8 @@ void			insertion_routine(char *mess, unsigned long (*hash_func)())
 	i = 0;
 	while (i < size)
 	{
-		ht_init(&ht, 2 * nb_ins[i], int_cmp, best);
-		test_insertion(&ht, nb_ins[i], hash_func);
+		ht_init(&ht, 2 * nb_ins[i], int_cmp, hash_func);
+		test_insertion(&ht, nb_ins[i]);
 		ht_freem(&ht);
 		i++;
 	}
