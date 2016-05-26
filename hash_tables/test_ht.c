@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 10:44:09 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/26 16:30:54 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/26 16:47:00 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,19 @@
 void			test_insertion(t_hash_tbl *ht, int nb_insert)
 {
 	int				i;
-	int				nb_col;
 	clock_t			begin;
 	clock_t			end;
 
 	begin = clock();
 	i = 0;
-	nb_col = 0;
 	while (i < nb_insert)
 	{
 		ADD_INT(ht, i, i);
 		i++;
 	}
 	end = clock();
-	ft_printf("\t%d -> %.7f\t%d\n", nb_insert,
-			(double)(end - begin) / CLOCKS_PER_SEC, nb_col);
+	ft_printf("\t%d -> %.7f\n", nb_insert,
+			(double)(end - begin) / CLOCKS_PER_SEC);
 }
 
 void			insertion_routine(char *mess, unsigned long (*hash_func)())
@@ -57,13 +55,36 @@ void			insertion_routine(char *mess, unsigned long (*hash_func)())
 	ft_printf("--------------\n", mess);
 }
 
+void			basic_insertion(t_hash_tbl *ht, int nb_insert)
+{
+	int				i;
+
+	i = 0;
+	while (i < nb_insert)
+	{
+		ADD_INT(ht, i, i);
+		i++;
+	}
+}
+
+void			test_basic(void)
+{
+	t_hash_tbl	ht;
+
+	ht_init(&ht, 2 * 5, int_cmp, my_rand);
+	basic_insertion(&ht, 5);
+	ht_print(&ht, int_print, int_print);
+	ht_freem(&ht);
+}
+
 int				main(void)
 {
-	ft_printf("Test hash_tables.a\n"
-			"(mind that worst case has two less test)\n\n");
 	srand(time(NULL));
-	insertion_routine("random", my_rand);
-	insertion_routine("worst case", worst);
-	insertion_routine("best case", best);
+	test_basic();
+//	ft_printf("Test hash_tables.a\n"
+//			"(mind that worst case has two less test)\n\n");
+//	insertion_routine("random", my_rand);
+//	insertion_routine("worst case", worst);
+//	insertion_routine("best case", best);
 	return (0);
 }

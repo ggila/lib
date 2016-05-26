@@ -26,6 +26,7 @@ SRC = ht_free.c\
 	ht_init.c\
 	ht_isset.c\
 	ht_print.c\
+	ht_print_all.c\
 	ht_puts.c\
 	key_int/int_cmp.c\
 	key_int/int_hash.c\
