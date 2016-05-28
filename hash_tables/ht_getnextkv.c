@@ -12,8 +12,6 @@
 
 #include "hash_tables.h"
 
-#include <stdio.h>
-
 void			*ht_getnextkv(t_hash_tbl *ht)
 {
 	static unsigned int			i = -1;

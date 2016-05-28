@@ -20,4 +20,5 @@ void	ht_free(t_hash_tbl *ht)
 	i = 0;
 	while (i < ht->size)
 		free(ht->nodes[i++]);
+	free(ht->nodes);
 }

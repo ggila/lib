@@ -168,4 +168,6 @@ void			int_print(const int *i);
 **           return NULL;
 **        return np;
 **    }
+**
+**    ENLEVER CONST POUR VALUE
 */
