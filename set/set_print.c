@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 17:19:16 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/29 21:33:11 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/29 22:20:26 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void		node_print(t_set_node *node, void (*elem_print)())
 	{
 		elem_print(node->elem);
 		node = node->next;
-		if (node)
-			ft_printf("\t");
+		ft_printf(" ");
 	}
 }
 
