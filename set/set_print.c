@@ -6,22 +6,12 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 17:19:16 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/26 16:44:55 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/29 21:33:11 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "set.h"
 #include "ft_printf.h"
-
-void			str_print(const char *str)
-{
-	ft_printf("%s", str);
-}
-
-void			int_print(const int *i)
-{
-	ft_printf("%d", *i);
-}
 
 static void		node_print(t_set_node *node, void (*elem_print)())
 {

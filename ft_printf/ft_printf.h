@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:06:55 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:42:01 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/29 21:06:31 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void	write_hex(int fd, unsigned int nb);
 int		read_number(const char **str);
 size_t	ft_strlen(const char *str);
 void	ft_putnbr_fd(int fd, int n);
+void	str_print(const char *str);
+void	int_print(const int *i);
 
 #endif

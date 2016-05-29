@@ -28,7 +28,8 @@ SRC = ft_printf.c\
 	write_arg.c\
 	write_float.c\
 	write_hex.c\
-	write_ptr.c
+	write_ptr.c\
+	key_print.c
 
 INC = ../inc
 
