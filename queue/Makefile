@@ -19,20 +19,22 @@ NAME = queue.a
 
 CC = gcc
 
-SRC = pop.c\
-		push.c\
+SRC = queue_pop.c\
+		queue_push.c\
 		queue_init.c\
-		print_queue.c
-
-SRC_TEST = basic_test.c
+		queue_print.c
 
 INC = -I../inc
+
+LIB = ft_printf
+LIB_DIR = $(addsuffix /, $(addprefix ../, $(LIB)))
+LIB_INC = $(addprefix -I./, $(LIB_DIR))
+LIB_A = $(join $(LIB_DIR), $(addsuffix .a, $(LIB)))
 
 FLAGS = -Wall -Werror -Wextra
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-OBJ_TEST = $(addprefix $(OBJ_DIR)/, $(SRC_TEST:.c=.o))
 
 all : $(NAME)
 
@@ -40,8 +42,10 @@ $(NAME) : $(OBJ)
 	@ar rc  $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-test: $(LIB_A) $(NAME) $(OBJ_TEST)
-	$(CC) $(FLAGS) $(INC) $(NAME) $(SRC_TEST) $(LIB_A)
+$(LIB_A):
+	@echo 'build $(notdir $@)'
+	@make -C $(dir $@)
+	@make clean -C $(dir $@)
 
 $(OBJ_DIR)/%.o : %.c queue.h | $(OBJ_DIR)
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@

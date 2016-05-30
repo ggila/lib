@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_queue.c                                      :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/18 18:40:30 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/18 18:51:37 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/05/18 11:39:38 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/05/30 18:03:20 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
-#include <stdio.h>
 
-void	print_queue(t_queue *queue)
+void	*queue_pop(t_queue *queue)
 {
+	void			*addr;
 	t_queue_node	*tmp;
 
-	tmp = queue->next;
-	while (tmp != queue)
-	{
-		printf("%p\n", tmp->addr);
-		tmp = tmp->next;
-	}
+	if (!queue->head)
+		return (NULL);
+	addr = queue->head->addr;
+	tmp = queue->head;
+	if (queue->tail == queue->head)
+		queue->tail = NULL;
+	queue->head = queue->head->next;
+	free(tmp);
+	return (addr);
 }

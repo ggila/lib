@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   print_queue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/18 11:24:43 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/20 17:22:45 by ggilaber         ###   ########.fr       */
+/*   Created: 2016/05/18 18:40:30 by ggilaber          #+#    #+#             */
+/*   Updated: 2016/05/30 18:38:56 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
+#include <stdio.h>
 
-char	push(t_queue *queue, void *addr)
+void	rec_print(t_queue_node *node, void (*f)())
 {
-	t_queue_node	*new;
+	f(node->addr);
+	if (node->next)
+		rec_print(node->next, f);
+}
 
-	if (addr == NULL)
-		return (false);
-	if ((new = malloc(sizeof(t_queue_node))) == NULL)
-		return (false);
-	new->addr = addr;
-	new->next = queue->next;
-	new->prev = (t_queue_node*)queue;
-	queue->next->prev = new;
-	queue->next = new;
-	return (true);
+void	queue_print(t_queue *queue, void (*my_print)())
+{
+	if (queue->head)
+		rec_print(queue->head, my_print);
 }
