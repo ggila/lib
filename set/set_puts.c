@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/26 16:05:13 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/30 15:50:13 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,22 @@ static bool	set_add(t_set *const set,
 		return (set_new_node(&(set->nodes[i]), elem, size, m));
 	while (node->next)
 		node = node->next;
-	return (set_new_node(&node, elem, size, m));
+	if (!set_new_node(&node, elem, size, m))
+		return (false);
+	set->nb_nodes += 1;
+	return (true);
 }
 
 bool		set_putm(t_set *const set, void *const elem, size_t size)
 {
+	if (set_isin(set, elem))
+		return (true);
 	return (set_add(set, elem, size, 1));
 }
 
 bool		set_put(t_set *const set, void *const elem, size_t size)
 {
+	if (set_isin(set, elem))
+		return (true);
 	return (set_add(set, elem, size, 0));
 }

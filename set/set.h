@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/29 21:46:31 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/30 15:40:36 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_set_node
 typedef struct	s_set
 {
 	t_set_node		**nodes;
+	size_t			nb_nodes;
 	size_t			size;
 	int				(*elem_cmp)();
 	unsigned long	(*elem_hash)();
