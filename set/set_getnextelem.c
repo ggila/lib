@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 10:00:07 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/02/12 19:15:33 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/05/30 17:03:37 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void			*set_getnextelem(t_set *set)
 			i++;
 		node = (i == set->size) ? NULL : set->nodes[i];
 	}
-	return (node ? &(node->elem) : NULL);
+	return (node ? node->elem : NULL);
 }
