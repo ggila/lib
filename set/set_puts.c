@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 21:47:57 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/30 16:13:08 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/02 16:10:38 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool		set_putm(t_set *const set, void *const elem, size_t size)
 	return (set_add(set, elem, size, 1));
 }
 
-bool		set_put(t_set *const set, void *const elem, size_t size)
+bool		set_put(t_set *const set, void *const elem)
 {
-	return (set_add(set, elem, size, 0));
+	return (set_add(set, elem, sizeof(void*), 0));
 }

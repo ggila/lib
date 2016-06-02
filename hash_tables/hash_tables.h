@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/29 21:46:26 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/02 16:00:48 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,14 @@ void			*ht_get(t_hash_tbl *ht, void *key);
 **  ht_getnextkv:
 **     - iterate on ht
 **     - return a pointer on t_kv, NULL when over
+**
+** BE CAREFULL using this function. Static are used in it. To be redone with
+** something like:
+** struct         ht_it
+** {
+**      int       bucket;
+**      ht_node  *node;
+** }
 */
 
 void			*ht_getnextkv(t_hash_tbl *ht);

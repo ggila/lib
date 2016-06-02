@@ -25,7 +25,8 @@ SRC =  set_free.c\
 		set_init.c\
 		set_isin.c\
 		set_print.c\
-		set_puts.c
+		set_puts.c\
+		set_copy.c
 
 INC = -I../inc
 

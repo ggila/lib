@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/05/30 15:40:36 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/02 16:17:23 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,21 @@ bool			set_init(t_set *const set, int size,
 **         - Use one or the other, not both, or implement your own free func
 */
 
-bool			set_put(t_set *const set, void *const elem, size_t size);
+bool			set_put(t_set *const set, void *const elem);
 bool			set_putm(t_set *const set, void *const elem, size_t size);
 
 /*
 **  set_getnextelem:
 **     - iterate on set
 **     - return a pointer on elem
+**
+** BE CAREFULL using this function. Static are used in it. To be redone with
+** something like:
+** struct         set_it
+** {
+**      int       bucket;
+**      set_node  *node;
+** }
 */
 
 void			*set_getnextelem(t_set *set);
@@ -102,6 +110,12 @@ void			set_freem(t_set *set);
 */
 
 void			set_print(t_set *set, void (*elem_print)());
+
+/*
+**  set_copy
+*/
+
+t_set			*set_copy(t_set *set);
 
 /*
 **  elem_string:
