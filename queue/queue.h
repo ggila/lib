@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:19:21 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/06/01 11:44:51 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/02 14:58:24 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	*queue_pop(t_queue *queue);
 bool	queue_push(t_queue *queue, void *addr);
 void	queue_print(t_queue *queue, void (*my_print)());
 void	queue_push_queue(t_queue *queue, t_queue *add);
+void	queue_map(t_queue *queue, void (*f)());
 
 #endif

@@ -23,7 +23,8 @@ SRC = queue_pop.c\
 		queue_push.c\
 		queue_init.c\
 		queue_push_queue.c\
-		queue_print.c
+		queue_print.c\
+		queue_map.c
 
 INC = -I../inc
 

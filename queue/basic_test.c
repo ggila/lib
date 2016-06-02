@@ -6,7 +6,7 @@
 /*   By: ggilaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 11:52:46 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/06/01 11:58:35 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/02 15:03:05 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 void	my_print(void *d)
 {
 	printf("%d ", *(int*)d);
+}
+
+void	test_map(int *ptr)
+{
+	*ptr += 1;
 }
 
 int main(void)
@@ -45,6 +50,11 @@ int main(void)
 	queue_push_queue(&q, &q2);
 	printf("print queue:\n");
 	queue_print(&q, my_print);
+	queue_map(&q, test_map);
+	printf("\nmap&print queue:\n");
+	queue_print(&q, my_print);
+	printf("\n");
+	return (0);
 	printf("\nqueue_pop() then print queue:\n");
 	queue_pop(&q);
 	queue_print(&q, my_print);
