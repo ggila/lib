@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:16:02 by ggilaber          #+#    #+#             */
-/*   Updated: 2016/06/02 16:17:23 by ggilaber         ###   ########.fr       */
+/*   Updated: 2016/06/03 08:17:12 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,16 @@ bool			set_putm(t_set *const set, void *const elem, size_t size);
 **  set_getnextelem:
 **     - iterate on set
 **     - return a pointer on elem
-**
-** BE CAREFULL using this function. Static are used in it. To be redone with
-** something like:
-** struct         set_it
-** {
-**      int       bucket;
-**      set_node  *node;
-** }
 */
 
-void			*set_getnextelem(t_set *set);
+typedef struct	s_set_it
+{
+	unsigned int	bucket;
+	t_set_node		*node;
+}				t_set_it;
+
+void			set_it_init(t_set_it *it);
+void			*set_getnextelem(t_set *set, t_set_it *it);
 
 /*
 **  set_isset:
