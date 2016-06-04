@@ -17,6 +17,11 @@
 # include <stdlib.h>
 
 int		ft_atoi(const char *str);
+char	ft_islowercase(char c);
+char	ft_isuppercase(char c);
+char	ft_isdigit(char c);
+char	ft_isletter(char c);
+char	ft_isalnum(char c);
 
 /*
 **		ft_mem
